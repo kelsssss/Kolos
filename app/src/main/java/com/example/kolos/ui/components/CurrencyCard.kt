@@ -18,10 +18,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.kolos.network.CoinsData
 import com.example.kolos.ui.theme.KolosTheme
 
 @Composable
-fun CurrencyCard(navController: NavController){
+fun CurrencyCard(navController: NavController, coinData: CoinsData){
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -36,7 +37,7 @@ fun CurrencyCard(navController: NavController){
         ) {
 
             Text(
-                text = "TestName",
+                text = coinData.name,
                 fontSize = 20.sp,
                 modifier = Modifier
                     .padding(start = 20.dp))
@@ -45,7 +46,7 @@ fun CurrencyCard(navController: NavController){
                     .weight(1f)
             )
             Text(
-                text = "1.00$",
+                text = "${coinData.price}$",
                 fontSize = 25.sp,
                 modifier = Modifier
                     .padding(end = 20.dp)
