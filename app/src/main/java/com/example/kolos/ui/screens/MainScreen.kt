@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-//import com.example.kolos.ui.components.CurrencyCard
 import com.example.kolos.ui.components.CurrencyCardList
 import com.example.kolos.ui.components.MainTopBar
 import com.example.kolos.ui.theme.KolosTheme
