@@ -17,16 +17,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.kolos.ui.theme.KolosTheme
 
 @Composable
-fun CurrencyCard(){
+fun CurrencyCard(navController: NavController){
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 10.dp, start = 10.dp, end = 10.dp)
             .height(70.dp)
-            .clickable(onClick = {})
+            .clickable(onClick = {navController.navigate("details")})
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),
@@ -60,7 +61,7 @@ fun CurrencyCardPreview(){
         Column(
             modifier = Modifier.fillMaxSize()
         ){
-            CurrencyCard()
+//            CurrencyCard()
         }
     }
 }

@@ -6,13 +6,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.kolos.ui.theme.KolosTheme
 
 @Composable
-fun CurrencyCardList(modifier: Modifier){
+fun CurrencyCardList(modifier: Modifier, navController: NavController){
     LazyColumn {
         items(15){
-            CurrencyCard()
+            CurrencyCard(navController)
         }
     }
 }
@@ -24,7 +25,7 @@ fun CurrencyCardListPreview(){
         Column(
             modifier = Modifier.fillMaxSize()
         ){
-            CurrencyCardList(modifier = Modifier)
+//            CurrencyCardList(modifier = Modifier)
         }
     }
 }

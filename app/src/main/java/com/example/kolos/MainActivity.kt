@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kolos.ui.components.CurrencyCardList
+import com.example.kolos.ui.components.KolosNavigation
 import com.example.kolos.ui.screens.MainScreen
 import com.example.kolos.ui.theme.KolosTheme
 
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             KolosTheme {
-                MainScreen()
+                KolosNavigation()
             }
         }
     }
