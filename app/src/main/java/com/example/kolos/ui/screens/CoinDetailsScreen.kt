@@ -8,10 +8,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.kolos.network.CoinData
 import com.example.kolos.ui.components.MainTopBar
 
 @Composable
-fun CoinDetailsScreen(navController: NavController){
+fun CoinDetailsScreen(navController: NavController, coinData: CoinData){
 
     Scaffold(
         topBar = { MainTopBar() },
@@ -20,7 +21,9 @@ fun CoinDetailsScreen(navController: NavController){
         Column(
             modifier = Modifier.fillMaxSize().padding(innerPadding)
         ){
+//            coinData.name
             Text(text = "Описание Монеты(тест)")
+            Text(text = "Название: ${coinData.name}")
         }
     }
 }

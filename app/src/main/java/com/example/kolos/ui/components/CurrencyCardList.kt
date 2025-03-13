@@ -8,14 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.example.kolos.network.CoinsData
+import com.example.kolos.network.CoinData
 import com.example.kolos.ui.theme.KolosTheme
 import androidx.compose.foundation.lazy.items
 
 @Composable
-fun CurrencyCardList(modifier: Modifier, navController: NavController, coinsData: List<CoinsData>){
+fun CurrencyCardList(modifier: Modifier, navController: NavController, coinData: List<CoinData>){
     LazyColumn {
-        items(coinsData){coinData->
+        items(coinData){ coinData->
             CurrencyCard(navController, coinData)
         }
     }
