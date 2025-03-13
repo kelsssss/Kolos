@@ -68,8 +68,6 @@ fun CurrencyCard(navController: NavController, coinData: CoinData) {
                         modifier = Modifier.padding(start = 10.dp, top = 7.dp, bottom = 7.dp)
                     )
                 }
-
-
             )
 
 
