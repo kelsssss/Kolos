@@ -1,11 +1,9 @@
 package com.example.kolos.database
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.kolos.network.CoinData
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainTopBar(text: String){
+fun MainTopBar(text: String) {
     TopAppBar(
         title = {
             Text(

@@ -11,8 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-//import androidx.compose.foundation.layout.size
-
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
@@ -20,21 +18,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
-import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
+import com.example.kolos.R
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.theme.KolosTheme
-import com.example.kolos.R
 import com.google.gson.Gson
 import java.net.URLEncoder
 
@@ -84,7 +76,7 @@ fun CurrencyCard(navController: NavController, coinData: CoinData) {
 
             Column(
                 modifier = Modifier
-                .padding(start = 20.dp)
+                    .padding(start = 20.dp)
             ) {
                 Text(
                     text = coinData.name,
@@ -113,16 +105,16 @@ fun CurrencyCard(navController: NavController, coinData: CoinData) {
 
 @Preview(showBackground = true)
 @Composable
-fun CurrencyCardPreview(){
+fun CurrencyCardPreview() {
     KolosTheme {
         Column(
             modifier = Modifier.fillMaxSize()
-        ){
+        ) {
 //            CurrencyCard()
         }
     }
 }
 
-// https://api.coingecko.com/api/v3/coins/markets(передать в параметрах "usd")
+// https://api.coingecko.com/api/v3/coins/markets
 //root - https://api.coingecko.com/api/v3/
-//нужный(получить список монет с инфой всей) - https://api.coingecko.com/api/v3/coins/markets?x_cg_demo_api_key=CG-JgzNetfueE5S2carhKRYksD8
+//нужный(получить список монет с инфой всей) - https://api.coingecko.com/api/v3/coins/markets?x_cg_demo_api_key=api-key

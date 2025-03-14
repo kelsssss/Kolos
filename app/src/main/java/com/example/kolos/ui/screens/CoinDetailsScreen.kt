@@ -12,14 +12,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
+//import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.example.kolos.R
 import com.example.kolos.database.FavouriteCoin
@@ -27,19 +26,24 @@ import com.example.kolos.database.FavouriteCoinViewModel
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.components.Chart
 import com.example.kolos.ui.components.MainTopBar
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
-fun CoinDetailsScreen(navController: NavController, coinData: CoinData, viewModel: FavouriteCoinViewModel = viewModel()){
+fun CoinDetailsScreen(
+//    navController: NavController,
+    coinData: CoinData,
+    viewModel: FavouriteCoinViewModel = viewModel()
+) {
 
     Scaffold(
         topBar = { MainTopBar("Details") },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(
-            modifier = Modifier.fillMaxSize().padding(innerPadding)
-        ){
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
 //            coinData.name
             Text(text = "Описание Монеты(тест):")
             Text(text = "Название: ${coinData.name}")
@@ -73,7 +77,7 @@ fun CoinDetailsScreen(navController: NavController, coinData: CoinData, viewMode
                                 image = coinData.image,
                                 symbol = coinData.symbol,
                                 name = coinData.name
-                        )
+                            )
                         )
                     }
                 }

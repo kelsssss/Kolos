@@ -1,8 +1,5 @@
 package com.example.kolos.ui.components
 
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -15,47 +12,43 @@ import com.example.kolos.ui.screens.FavouriteScreen
 import com.example.kolos.ui.screens.MainScreen
 import com.google.gson.Gson
 import java.net.URLDecoder
-import java.net.URLEncoder
 
 @Composable
-fun KolosNavigation(){
+fun KolosNavigation() {
     var navController = rememberNavController()
     val gson = Gson()
 
     NavHost(
         navController = navController,
         startDestination = "main"
+    ) {
+        composable(
+            route = "main",
         ) {
-            composable(
-                route = "main",
-//                enterTransition = {
-//                    slideInHorizontally(animationSpec = tween(1000))
-//                },
-//                exitTransition = {
-//                    slideOutHorizontally(animationSpec = tween(1000))
-//                }
-            ){
-                MainScreen(navController = navController)
-            }
-            composable(
-                route = "details/{coinDataJson}",
-                arguments = listOf(
-                    navArgument("coinDataJson"){
+            MainScreen(navController = navController)
+        }
+        composable(
+            route = "details/{coinDataJson}",
+            arguments = listOf(
+                navArgument("coinDataJson") {
                     type = NavType.StringType
                 }
-                )
-            ) { backStackEntry ->
-                val encodedCoinDataJson = backStackEntry.arguments?.getString("coinDataJson")
-                val coinDataJson = URLDecoder.decode(encodedCoinDataJson, "UTF-8")
-                val coinData = gson.fromJson(coinDataJson, CoinData::class.java)
-                CoinDetailsScreen(navController = navController, coinData)
-            }
+            )
+        ) { backStackEntry ->
+            val encodedCoinDataJson = backStackEntry.arguments?.getString("coinDataJson")
+            val coinDataJson = URLDecoder.decode(encodedCoinDataJson, "UTF-8")
+            val coinData = gson.fromJson(coinDataJson, CoinData::class.java)
+            CoinDetailsScreen(
+//                navController = navController,
+                coinData
+            )
+        }
 
-            composable(
-                route = "favourite",
+        composable(
+            route = "favourite",
 
             ) {
-                FavouriteScreen(navController = navController)
-            }
+            FavouriteScreen(navController = navController)
         }
+    }
 }

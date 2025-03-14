@@ -2,7 +2,6 @@ package com.example.kolos.ui.components
 
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,8 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-//import androidx.compose.foundation.layout.size
-
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -25,31 +22,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
-import coil.compose.AsyncImage
-import coil.compose.AsyncImagePainter
+//import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
-import com.example.kolos.network.CoinData
-import com.example.kolos.ui.theme.KolosTheme
 import com.example.kolos.R
 import com.example.kolos.database.FavouriteCoin
 import com.example.kolos.database.FavouriteCoinViewModel
-import com.google.gson.Gson
 import kotlinx.coroutines.launch
-import java.net.URLEncoder
 
 @Composable
-fun FavouriteCurrencyCard(navController: NavController, favouriteCoin: FavouriteCoin, viewModel: FavouriteCoinViewModel = viewModel()) {
+fun FavouriteCurrencyCard(
+//    navController: NavController,
+    favouriteCoin: FavouriteCoin,
+    viewModel: FavouriteCoinViewModel = viewModel()
+) {
 
 //    val gson = Gson()
 //    val coinDataJson = gson.toJson(coinData)
@@ -124,7 +114,7 @@ fun FavouriteCurrencyCard(navController: NavController, favouriteCoin: Favourite
                 Icon(
                     imageVector = Icons.Default.Delete,
                     contentDescription = null
-                    )
+                )
             }
         }
     }

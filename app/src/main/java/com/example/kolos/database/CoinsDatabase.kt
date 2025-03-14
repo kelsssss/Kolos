@@ -17,12 +17,12 @@ abstract class CoinsDatabase : RoomDatabase() {
 
             synchronized(this) {
                 var instance = INSTANCE
-                if(instance == null){
+                if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         CoinsDatabase::class.java,
                         "Coins_db"
-                        ).fallbackToDestructiveMigration().build()
+                    ).fallbackToDestructiveMigration().build()
                     INSTANCE = instance
                 }
                 return instance
