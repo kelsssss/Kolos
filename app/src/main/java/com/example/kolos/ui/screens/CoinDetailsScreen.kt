@@ -22,7 +22,7 @@ import com.example.kolos.ui.components.MainTopBar
 @Composable
 fun CoinDetailsScreen(navController: NavController, coinData: CoinData){
     Scaffold(
-        topBar = { MainTopBar() },
+        topBar = { MainTopBar("Details") },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(

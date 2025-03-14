@@ -31,7 +31,7 @@ fun MainScreen(viewModel: MainViewModel = viewModel(), navController: NavControl
     }
 
     Scaffold(
-        topBar = { MainTopBar() },
+        topBar = { MainTopBar("Coins") },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(

@@ -11,11 +11,11 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainTopBar(){
+fun MainTopBar(text: String){
     TopAppBar(
         title = {
             Text(
-                text = "Coins",
+                text = text,
                 fontSize = 30.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
