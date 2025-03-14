@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.kolos.ui.components.KolosBottomBar
 
 @Composable
 fun MainScreen(viewModel: MainViewModel = viewModel(), navController: NavController){
@@ -31,20 +32,16 @@ fun MainScreen(viewModel: MainViewModel = viewModel(), navController: NavControl
     }
 
     Scaffold(
+        modifier = Modifier.fillMaxSize(),
         topBar = { MainTopBar("Coins") },
-        modifier = Modifier.fillMaxSize()
+        bottomBar = { KolosBottomBar(navController) },
+//        modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(
             modifier = Modifier.fillMaxSize().padding(innerPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){
-//            if(coinsData == null){
-//                CircularProgressIndicator(
-//                    color = Color.White,
-//                    strokeWidth = 100.dp
-//                )
-//            }
             coinsData?.let { CurrencyCardList(modifier = Modifier, navController, it) }
         }
     }

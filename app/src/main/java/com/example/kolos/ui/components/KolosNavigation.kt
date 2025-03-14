@@ -1,5 +1,8 @@
 package com.example.kolos.ui.components
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -8,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.screens.CoinDetailsScreen
+import com.example.kolos.ui.screens.FavouriteScreen
 import com.example.kolos.ui.screens.MainScreen
 import com.google.gson.Gson
 import java.net.URLDecoder
@@ -23,7 +27,13 @@ fun KolosNavigation(){
         startDestination = "main"
         ) {
             composable(
-                route = "main"
+                route = "main",
+//                enterTransition = {
+//                    slideInHorizontally(animationSpec = tween(1000))
+//                },
+//                exitTransition = {
+//                    slideOutHorizontally(animationSpec = tween(1000))
+//                }
             ){
                 MainScreen(navController = navController)
             }
@@ -39,6 +49,13 @@ fun KolosNavigation(){
                 val coinDataJson = URLDecoder.decode(encodedCoinDataJson, "UTF-8")
                 val coinData = gson.fromJson(coinDataJson, CoinData::class.java)
                 CoinDetailsScreen(navController = navController, coinData)
+            }
+
+            composable(
+                route = "favourite",
+
+            ) {
+                FavouriteScreen(navController = navController)
             }
         }
 }

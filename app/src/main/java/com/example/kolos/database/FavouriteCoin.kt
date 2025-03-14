@@ -7,5 +7,8 @@ import com.example.kolos.network.CoinData
 
 @Entity(tableName = "favourite_coin_table")
 data class FavouriteCoin (
-    @PrimaryKey val id: String
+    @PrimaryKey val id: String,
+    val image: String,
+    val name: String,
+    val symbol: String
 )
