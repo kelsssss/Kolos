@@ -1,6 +1,7 @@
 package com.example.kolos.ui.components
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,9 +26,13 @@ fun Chart(prices: List<Double>){
     LineGraph(
         plot = LinePlot(
             lines = listOf(line),
+//            xAxis = LinePlot.XAxis(
+////                steps = 20
+//
+//            ),
             isZoomAllowed = true
         ),
-//        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.padding(20.dp)
     )
 
 }

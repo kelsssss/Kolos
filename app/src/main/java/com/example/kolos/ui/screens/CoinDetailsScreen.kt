@@ -32,6 +32,7 @@ fun CoinDetailsScreen(navController: NavController, coinData: CoinData){
             Text(text = "Описание Монеты(тест):")
             Text(text = "Название: ${coinData.name}")
             Text(text = coinData.symbol)
+            Text(text = "Цена сейчас: ${coinData.price}")
 
             SubcomposeAsyncImage(
                 model = coinData.image,

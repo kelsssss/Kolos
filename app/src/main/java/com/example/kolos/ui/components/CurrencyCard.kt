@@ -10,6 +10,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+//import androidx.compose.foundation.layout.size
+
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
@@ -54,7 +57,9 @@ fun CurrencyCard(navController: NavController, coinData: CoinData) {
             SubcomposeAsyncImage(
                 model = coinData.image,
                 contentDescription = null,
-                modifier = Modifier.padding(start = 10.dp, top = 7.dp, bottom = 7.dp),
+                modifier = Modifier
+                    .padding(start = 10.dp, top = 7.dp, bottom = 7.dp)
+                    .size(50.dp),
                 loading = {
                     CircularProgressIndicator(
                         modifier = Modifier.padding(start = 10.dp, top = 7.dp, bottom = 7.dp),
