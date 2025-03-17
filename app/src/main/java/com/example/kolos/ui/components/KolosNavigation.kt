@@ -39,8 +39,8 @@ fun KolosNavigation() {
             val coinDataJson = URLDecoder.decode(encodedCoinDataJson, "UTF-8")
             val coinData = gson.fromJson(coinDataJson, CoinData::class.java)
             CoinDetailsScreen(
-//                navController = navController,
-                coinData
+                navController = navController,
+                coinData = coinData
             )
         }
 
