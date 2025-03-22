@@ -1,6 +1,7 @@
 package com.example.kolos.ui.components
 
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -12,6 +13,7 @@ import com.madrapps.plot.line.DataPoint
 import com.madrapps.plot.line.LineGraph
 import com.madrapps.plot.line.LinePlot
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun Chart(prices: List<Double>) {
     val points = prices.mapIndexed { index, price ->

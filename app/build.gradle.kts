@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp")
     id("androidx.room")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -84,6 +85,10 @@ dependencies {
 
     implementation(libs.mpandroidchart)
     implementation(libs.plot)
+
+    //Dagger Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

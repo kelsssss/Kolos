@@ -30,7 +30,7 @@ fun MainScreen(viewModel: MainViewModel = viewModel(), navController: NavControl
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { MainTopBar("Coins", navController) },
+        topBar = { MainTopBar("Coins", navController, coinsData = coinsData) },
         bottomBar = { KolosBottomBar(navController, "main") },
     ) { innerPadding ->
         Column(
