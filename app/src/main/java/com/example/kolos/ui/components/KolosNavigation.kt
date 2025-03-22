@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.screens.CoinDetailsScreen
+import com.example.kolos.ui.screens.FavouriteCoinScreen
 import com.example.kolos.ui.screens.FavouriteScreen
 import com.example.kolos.ui.screens.MainScreen
 import com.google.gson.Gson
@@ -46,9 +47,20 @@ fun KolosNavigation() {
 
         composable(
             route = "favourite",
-
             ) {
             FavouriteScreen(navController = navController)
+        }
+
+        composable(
+            route = "favouriteCoin/{id}",
+            arguments = listOf(
+                navArgument("id") {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")
+            FavouriteCoinScreen(navController = navController, coinId = id!!)
         }
     }
 }

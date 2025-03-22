@@ -24,4 +24,6 @@ class FavouriteCoinViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
+
+
 }

@@ -27,7 +27,7 @@ fun FavouriteScreen(viewModel: FavouriteCoinViewModel = viewModel(), navControll
         Column(modifier = Modifier.padding(innerPadding)) {
             coins.value.forEach { coin ->
                 FavouriteCurrencyCard(
-//                    navController = navController,
+                    navController = navController,
                     favouriteCoin = coin
                 )
             }

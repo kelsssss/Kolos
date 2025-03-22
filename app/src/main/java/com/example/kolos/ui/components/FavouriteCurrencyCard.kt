@@ -2,6 +2,7 @@ package com.example.kolos.ui.components
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 //import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.example.kolos.R
@@ -36,7 +38,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun FavouriteCurrencyCard(
-//    navController: NavController,
+    navController: NavController,
     favouriteCoin: FavouriteCoin,
     viewModel: FavouriteCoinViewModel = viewModel()
 ) {
@@ -50,7 +52,7 @@ fun FavouriteCurrencyCard(
             .fillMaxWidth()
             .padding(top = 10.dp, start = 10.dp, end = 10.dp)
             .height(70.dp)
-//            .clickable(onClick = { navController.navigate("details/$encodedCoinDataJson") })
+            .clickable(onClick = { navController.navigate("favouriteCoin/${favouriteCoin.id}") })
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),
@@ -98,12 +100,12 @@ fun FavouriteCurrencyCard(
                 modifier = Modifier
                     .weight(1f)
             )
-            Text(
-                text = "Цена$",
-                fontSize = 25.sp,
-                modifier = Modifier
-                    .padding(end = 20.dp)
-            )
+//            Text(
+//                text = "Цена$",
+//                fontSize = 25.sp,
+//                modifier = Modifier
+//                    .padding(end = 20.dp)
+//            )
             IconButton(
                 onClick = {
                     viewModel.viewModelScope.launch {

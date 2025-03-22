@@ -41,7 +41,6 @@ fun CoinDetailsScreen(
     coinData: CoinData,
     viewModel: FavouriteCoinViewModel = viewModel()
 ) {
-
     Scaffold(
         topBar = { MainTopBar("Details", navController = navController, coinData = coinData ) },
         modifier = Modifier.fillMaxSize()
