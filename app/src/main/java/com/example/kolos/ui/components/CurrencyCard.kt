@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.example.kolos.R
+import com.example.kolos.functions.coinDataToEncodedJson
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.theme.KolosTheme
 import com.google.gson.Gson
@@ -32,10 +33,9 @@ import java.net.URLEncoder
 
 @Composable
 fun CurrencyCard(navController: NavController, coinData: CoinData) {
-    val gson = Gson()
 
-    val coinDataJson = gson.toJson(coinData)
-    val encodedCoinDataJson = URLEncoder.encode(coinDataJson, "UTF-8")
+    val encodedCoinDataJson = coinDataToEncodedJson(coinData)
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,10 +50,6 @@ fun CurrencyCard(navController: NavController, coinData: CoinData) {
         ) {
             SubcomposeAsyncImage(
                 model = coinData.image,
-//                model = ImageRequest.Builder(LocalContext.current)
-//                    .data(coinData.image)
-//                    .size(50, 50)
-//                    .build(),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(start = 10.dp, top = 7.dp, bottom = 7.dp)

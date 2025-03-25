@@ -1,4 +1,4 @@
-package com.example.kolos.ui.components
+package com.example.kolos.functions
 
 import com.example.kolos.database.FavouriteCoin
 import com.example.kolos.network.CoinData

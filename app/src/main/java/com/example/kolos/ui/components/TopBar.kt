@@ -2,17 +2,11 @@ package com.example.kolos.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 //import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.sharp.Close
-import androidx.compose.material.icons.sharp.KeyboardArrowLeft
-import androidx.compose.material3.Card
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -21,12 +15,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,8 +29,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.kolos.database.FavouriteCoin
 import com.example.kolos.database.FavouriteCoinViewModel
+import com.example.kolos.functions.coinDataToEncodedJson
+import com.example.kolos.functions.toFavouriteCoin
 import com.example.kolos.network.CoinData
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
@@ -97,9 +89,10 @@ fun MainTopBar(text: String, navController: NavController, coinsData: List<CoinD
                                     DropdownMenuItem(
                                         text = { Text(coin.name) },
                                         onClick = {
-                                            val gson = Gson()
-                                            val coinDataJson = gson.toJson(coin)
-                                            val encodedCoinDataJson = URLEncoder.encode(coinDataJson, "UTF-8")
+//                                            val gson = Gson()
+//                                            val coinDataJson = gson.toJson(coin)
+//                                            val encodedCoinDataJson = URLEncoder.encode(coinDataJson, "UTF-8")
+                                            var encodedCoinDataJson = coinDataToEncodedJson(coin)
                                             expanded = false
                                             navController.navigate("details/$encodedCoinDataJson")
                                         }
