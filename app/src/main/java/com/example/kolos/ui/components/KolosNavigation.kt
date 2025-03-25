@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.kolos.functions.encodedJsonToCoin
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.screens.CoinDetailsScreen
 import com.example.kolos.ui.screens.FavouriteCoinScreen
@@ -17,7 +18,7 @@ import java.net.URLDecoder
 @Composable
 fun KolosNavigation() {
     var navController = rememberNavController()
-    val gson = Gson()
+//    val gson = Gson()
 
     NavHost(
         navController = navController,
@@ -37,8 +38,9 @@ fun KolosNavigation() {
             )
         ) { backStackEntry ->
             val encodedCoinDataJson = backStackEntry.arguments?.getString("coinDataJson")
-            val coinDataJson = URLDecoder.decode(encodedCoinDataJson, "UTF-8")
-            val coinData = gson.fromJson(coinDataJson, CoinData::class.java)
+            val coinData = encodedJsonToCoin(encodedCoinDataJson)
+//            val coinDataJson = URLDecoder.decode(encodedCoinDataJson, "UTF-8")
+//            val coinData = gson.fromJson(coinDataJson, CoinData::class.java)
             CoinDetailsScreen(
                 navController = navController,
                 coinData = coinData

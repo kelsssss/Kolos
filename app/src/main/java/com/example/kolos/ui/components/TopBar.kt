@@ -31,11 +31,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kolos.database.FavouriteCoinViewModel
 import com.example.kolos.functions.coinDataToEncodedJson
-import com.example.kolos.functions.toFavouriteCoin
+import com.example.kolos.functions.coinToFavouriteCoin
 import com.example.kolos.network.CoinData
-import com.google.gson.Gson
 import kotlinx.coroutines.launch
-import java.net.URLEncoder
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -128,7 +126,7 @@ fun MainTopBar(text: String, navController: NavController, coinsData: List<CoinD
                         onClick = {
                             favouriteCoinViewModel.viewModelScope.launch {
                                 favouriteCoinViewModel.insertCoin(
-                                    toFavouriteCoin(coinData!!)
+                                    coinToFavouriteCoin(coinData!!)
                                 )
                             }
                         }
