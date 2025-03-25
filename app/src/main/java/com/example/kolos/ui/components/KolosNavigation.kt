@@ -18,7 +18,6 @@ import java.net.URLDecoder
 @Composable
 fun KolosNavigation() {
     var navController = rememberNavController()
-//    val gson = Gson()
 
     NavHost(
         navController = navController,
@@ -39,8 +38,7 @@ fun KolosNavigation() {
         ) { backStackEntry ->
             val encodedCoinDataJson = backStackEntry.arguments?.getString("coinDataJson")
             val coinData = encodedJsonToCoin(encodedCoinDataJson)
-//            val coinDataJson = URLDecoder.decode(encodedCoinDataJson, "UTF-8")
-//            val coinData = gson.fromJson(coinDataJson, CoinData::class.java)
+
             CoinDetailsScreen(
                 navController = navController,
                 coinData = coinData

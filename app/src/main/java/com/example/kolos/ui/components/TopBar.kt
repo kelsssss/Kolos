@@ -87,9 +87,6 @@ fun MainTopBar(text: String, navController: NavController, coinsData: List<CoinD
                                     DropdownMenuItem(
                                         text = { Text(coin.name) },
                                         onClick = {
-//                                            val gson = Gson()
-//                                            val coinDataJson = gson.toJson(coin)
-//                                            val encodedCoinDataJson = URLEncoder.encode(coinDataJson, "UTF-8")
                                             var encodedCoinDataJson = coinDataToEncodedJson(coin)
                                             expanded = false
                                             navController.navigate("details/$encodedCoinDataJson")

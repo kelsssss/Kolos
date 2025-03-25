@@ -30,7 +30,6 @@ fun Chart(prices: List<Double>) {
                 lines = listOf(line),
                 isZoomAllowed = true
             ),
-//            modifier = Modifier.padding(vertical = 50.dp, horizontal = 20.dp)
             modifier = Modifier.padding(bottom = 50.dp, start = 20.dp, end = 20.dp)
 
         )

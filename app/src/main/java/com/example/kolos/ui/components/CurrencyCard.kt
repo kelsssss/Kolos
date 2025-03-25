@@ -110,7 +110,3 @@ fun CurrencyCardPreview() {
         }
     }
 }
-
-// https://api.coingecko.com/api/v3/coins/markets
-//root - https://api.coingecko.com/api/v3/
-//нужный(получить список монет с инфой всей) - https://api.coingecko.com/api/v3/coins/markets?x_cg_demo_api_key=api-key

@@ -43,10 +43,6 @@ fun FavouriteCurrencyCard(
     viewModel: FavouriteCoinViewModel = viewModel()
 ) {
 
-//    val gson = Gson()
-//    val coinDataJson = gson.toJson(coinData)
-//    val encodedCoinDataJson = URLEncoder.encode(coinDataJson, "UTF-8")
-
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -100,12 +96,6 @@ fun FavouriteCurrencyCard(
                 modifier = Modifier
                     .weight(1f)
             )
-//            Text(
-//                text = "Цена$",
-//                fontSize = 25.sp,
-//                modifier = Modifier
-//                    .padding(end = 20.dp)
-//            )
             IconButton(
                 onClick = {
                     viewModel.viewModelScope.launch {

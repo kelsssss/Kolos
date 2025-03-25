@@ -28,7 +28,6 @@ import androidx.navigation.NavController
 
 @Composable
 fun KolosBottomBar(navController: NavController, currentRoute: String?) {
-//    var currentBackStack by remember{ mutableStateOf(navController.currentBackStackEntry?.destination?.route) }
 
     BottomAppBar(
         actions = {

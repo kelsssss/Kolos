@@ -45,9 +45,7 @@ fun FavouriteCoinScreen(
 
 
     Scaffold(
-        topBar = { MainTopBar("Details", navController = navController
-//            , coinData = coinData
-        ) },
+        topBar = { MainTopBar("Details", navController = navController) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(
@@ -70,7 +68,6 @@ fun FavouriteCoinScreen(
                 ) {
                     Spacer(modifier = Modifier.weight(1f))
                     SubcomposeAsyncImage(
-//                    model = fetchedCoinData.value?.image,
                         model = coinData.image.small,
                         contentDescription = null,
                         modifier = Modifier.padding(

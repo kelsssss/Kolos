@@ -84,34 +84,10 @@ fun CoinDetailsScreen(
 
             Text(text = "Цена: ${coinData.price}$", fontSize = 30.sp, modifier = Modifier.padding(bottom = 20.dp))
 
-
-//            Button(
-//                onClick = {
-//                    viewModel.viewModelScope.launch {
-//                        viewModel.insertCoin(
-//                            FavouriteCoin(
-//                                id = coinData.id,
-//                                image = coinData.image,
-//                                symbol = coinData.symbol,
-//                                name = coinData.name
-//                            )
-//                        )
-//                    }
-//                }
-//            ) {
-//                Icon(Icons.Default.Favorite, contentDescription = null)
+//            Row {
+//                Spacer(modifier = Modifier.weight(1f))
+//                Spacer(modifier = Modifier.weight(1f))
 //            }
-            Row {
-                Spacer(modifier = Modifier.weight(1f))
-//                Text(
-//                    text = "График цены:",
-//                    fontSize = 30.sp,
-//                    textAlign = TextAlign.Center,
-//                    modifier = Modifier.padding(vertical = 15.dp)
-//                )
-                Spacer(modifier = Modifier.weight(1f))
-
-            }
 
             Chart(coinData.sparkline.price)
 
