@@ -24,6 +24,10 @@ class FavouriteCoinViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
+    suspend fun isCoinFavourite(name: String) : Int{
+        return dbDao.isCoinFavourite(name)
+    }
+
 
 
 }

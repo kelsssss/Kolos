@@ -4,8 +4,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 //import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.sharp.Close
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,6 +20,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,9 +41,19 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainTopBar(text: String, navController: NavController, coinsData: List<CoinData>? = null, favouriteCoinViewModel: FavouriteCoinViewModel = viewModel(), coinData: CoinData? = null) {
+fun MainTopBar(
+    text: String,
+    navController: NavController,
+    coinsData: List<CoinData>? = null,
+    favouriteCoinViewModel: FavouriteCoinViewModel = viewModel(),
+    coinData: CoinData? = null,
 
-    var currentBackStack by remember { mutableStateOf(navController.currentBackStackEntry?.destination?.route) }
+    isCloseButtonNeeded: Boolean = false,
+    isSearchNeeded: Boolean = false,
+    isFavouriteButtonNeeded: Boolean = false,
+    ) {
+
+//    var currentBackStack by remember { mutableStateOf(navController.currentBackStackEntry?.destination?.route) }
     var searchText by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
 
@@ -48,10 +61,23 @@ fun MainTopBar(text: String, navController: NavController, coinsData: List<CoinD
         it.name.contains(searchText, ignoreCase = true)
     } ?: emptyList()
 
+//    var isThisCoinFavourite: List<Pair<String, Boolean>> by remember { mutableStateOf(emptyList<Pair<String, Boolean>>()) }
+
+    var isThisCoinFavourite by remember { mutableStateOf(false) }
+    if(coinData != null){
+        LaunchedEffect(Unit) {
+            if(favouriteCoinViewModel.isCoinFavourite(coinData.name) != 0){
+                isThisCoinFavourite = true
+            }
+        }
+    }
+
+
     Box {
         TopAppBar(
             title = {
-                if (currentBackStack == "main") {
+//                if (currentBackStack == "main") {
+                if(isSearchNeeded){
                     ExposedDropdownMenuBox(
                         expanded = expanded,
                         onExpandedChange = { expanded = it }
@@ -106,7 +132,8 @@ fun MainTopBar(text: String, navController: NavController, coinsData: List<CoinD
                 }
             },
             navigationIcon = {
-                if (currentBackStack == "details/{coinDataJson}") {
+//                if (currentBackStack == "details/{coinDataJson}") {
+                if(isCloseButtonNeeded){
                     IconButton(
                         onClick = { navController.popBackStack() }
                     ) {
@@ -118,20 +145,35 @@ fun MainTopBar(text: String, navController: NavController, coinsData: List<CoinD
                 }
             },
             actions = {
-                if (currentBackStack == "details/{coinDataJson}") {
+
+//                if (currentBackStack == "details/{coinDataJson}") {
+                if(isFavouriteButtonNeeded){
                     IconButton(
                         onClick = {
-                            favouriteCoinViewModel.viewModelScope.launch {
-                                favouriteCoinViewModel.insertCoin(
-                                    coinToFavouriteCoin(coinData!!)
-                                )
+//                            isThisCoinFavourite += Pair(coinData!!.name, true)
+                            when(isThisCoinFavourite){
+                                false -> { favouriteCoinViewModel.viewModelScope.launch {
+                                    favouriteCoinViewModel.insertCoin(coinToFavouriteCoin(coinData!!)) }
+                                }
+                                true -> { favouriteCoinViewModel.viewModelScope.launch {
+                                    favouriteCoinViewModel.deleteCoin(coinData!!.id)
+                                }}
                             }
+
+                            isThisCoinFavourite = !isThisCoinFavourite
                         }
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.FavoriteBorder,
-                            contentDescription = null
-                        )
+                        when(isThisCoinFavourite){
+                            true -> Icon(
+                                imageVector = Icons.Default.Favorite,
+                                contentDescription = null
+                            )
+                            false ->Icon(
+                                imageVector = Icons.Outlined.FavoriteBorder,
+                                contentDescription = null
+                            )
+                        }
+
                     }
                 }
             }

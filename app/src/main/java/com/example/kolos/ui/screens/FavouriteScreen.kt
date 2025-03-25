@@ -22,7 +22,7 @@ fun FavouriteScreen(viewModel: FavouriteCoinViewModel = viewModel(), navControll
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = { MainTopBar("Favourite", navController) },
-        bottomBar = { KolosBottomBar(navController, currentRoute = "favourite") }
+        bottomBar = { KolosBottomBar(navController) }
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             coins.value.forEach { coin ->

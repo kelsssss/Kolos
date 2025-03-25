@@ -28,6 +28,7 @@ import com.example.kolos.R
 import com.example.kolos.ui.components.Chart
 import com.example.kolos.ui.components.MainTopBar
 import androidx.compose.runtime.getValue
+import com.example.kolos.functions.coinDataByIdToCoinData
 
 @Composable
 fun FavouriteCoinScreen(
@@ -45,7 +46,17 @@ fun FavouriteCoinScreen(
 
 
     Scaffold(
-        topBar = { MainTopBar("Details", navController = navController) },
+        topBar = {
+            fetchedCoinData?.let {
+                MainTopBar(
+                    text = "Details",
+                    navController = navController,
+                    isCloseButtonNeeded = true,
+                    isFavouriteButtonNeeded = true,
+                    coinData = coinDataByIdToCoinData(it)
+                )
+            }
+        },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(

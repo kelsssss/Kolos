@@ -96,18 +96,18 @@ fun FavouriteCurrencyCard(
                 modifier = Modifier
                     .weight(1f)
             )
-            IconButton(
-                onClick = {
-                    viewModel.viewModelScope.launch {
-                        viewModel.deleteCoin(favouriteCoin.id)
-                    }
-                }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = null
-                )
-            }
+//            IconButton(
+//                onClick = {
+//                    viewModel.viewModelScope.launch {
+//                        viewModel.deleteCoin(favouriteCoin.id)
+//                    }
+//                }
+//            ) {
+//                Icon(
+//                    imageVector = Icons.Default.Delete,
+//                    contentDescription = null
+//                )
+//            }
         }
     }
 }

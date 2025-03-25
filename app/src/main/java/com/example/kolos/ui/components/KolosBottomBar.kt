@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.sharp.Favorite
 import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material3.BottomAppBar
@@ -27,7 +29,8 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun KolosBottomBar(navController: NavController, currentRoute: String?) {
+fun KolosBottomBar(navController: NavController) {
+    var currentRoute1 by remember {mutableStateOf(navController.currentBackStackEntry?.destination?.route)}
 
     BottomAppBar(
         actions = {
@@ -39,14 +42,14 @@ fun KolosBottomBar(navController: NavController, currentRoute: String?) {
                 IconButton(
                     onClick = { navController.navigate("main") },
                     ) {
-                    when(currentRoute){
+                    when(currentRoute1){
                         "main" -> Icon(
                             imageVector = Icons.Default.Home,
                             contentDescription = null,
                             modifier = Modifier.size(35.dp)
                         )
                         else -> Icon(
-                            imageVector = Icons.Sharp.Home,
+                            imageVector = Icons.Outlined.Home,
                             contentDescription = null,
                             modifier = Modifier.size(35.dp)
                         )
@@ -58,14 +61,14 @@ fun KolosBottomBar(navController: NavController, currentRoute: String?) {
                 IconButton(
                     onClick = { navController.navigate("favourite") }
                 ) {
-                    when(currentRoute){
+                    when(currentRoute1){
                         "favourite" -> Icon(
                             imageVector = Icons.Default.Favorite,
                             contentDescription = null,
                             modifier = Modifier.size(35.dp)
                         )
                         else -> Icon(
-                            imageVector = Icons.Sharp.Favorite,
+                            imageVector = Icons.Outlined.FavoriteBorder,
                             contentDescription = null,
                             modifier = Modifier.size(35.dp)
                         )

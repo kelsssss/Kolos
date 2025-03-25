@@ -42,7 +42,7 @@ fun CoinDetailsScreen(
     viewModel: FavouriteCoinViewModel = viewModel()
 ) {
     Scaffold(
-        topBar = { MainTopBar("Details", navController = navController, coinData = coinData ) },
+        topBar = { MainTopBar("Details", navController = navController, coinData = coinData, isFavouriteButtonNeeded = true, isCloseButtonNeeded = true) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(

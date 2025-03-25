@@ -11,7 +11,6 @@ data class CoinData(
     @SerializedName("sparkline_in_7d") val sparkline: SparklineData
 )
 
-
 data class SparklineData(
     val price: List<Double>
 )
