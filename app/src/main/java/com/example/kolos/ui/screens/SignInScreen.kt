@@ -35,7 +35,7 @@ fun SignInScreen(){
     ){
 //        Box(contentAlignment = Alignment.Center){
 
-        Text(text = "Sign In", fontSize = 40.sp)
+        Text(text = "Log In", fontSize = 40.sp)
         Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(
@@ -58,7 +58,7 @@ fun SignInScreen(){
         Button(
             onClick = {}
         ) {
-            Text(text = "Sign In")
+            Text(text = "Log In")
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -70,7 +70,7 @@ fun SignInScreen(){
         Button(
             onClick = {}
         ) {
-            Text(text = "Sign Up")
+            Text(text = "Create account")
         }
 //        }
     }

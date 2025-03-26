@@ -34,7 +34,7 @@ fun SignUpScreen(){
     ){
 //        Box(contentAlignment = Alignment.Center){
 
-        Text(text = "Sign Up", fontSize = 40.sp)
+        Text(text = "Create account", fontSize = 40.sp)
         Spacer(modifier = Modifier.height(20.dp))
             OutlinedTextField(
                 value = email,
@@ -56,7 +56,7 @@ fun SignUpScreen(){
             Button(
                 onClick = {}
             ) {
-                Text(text = "Sign Up")
+                Text(text = "Create account")
             }
 //        }
     }
