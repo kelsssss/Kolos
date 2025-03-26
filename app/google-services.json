@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "626110343967",
+    "project_id": "kolos-4190d",
+    "storage_bucket": "kolos-4190d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626110343967:android:a8b53c95738ca2aab19e2a",
+        "android_client_info": {
+          "package_name": "com.example.kolos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJI2V7aEEVElFrmb9NcAiho0VURaH-zGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
