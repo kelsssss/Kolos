@@ -6,10 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.kolos.ui.components.KolosNavigation
 import com.example.kolos.ui.theme.KolosTheme
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class MainActivity : ComponentActivity() {
+//    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        auth = Firebase.auth
         enableEdgeToEdge()
         setContent {
             KolosTheme {
@@ -17,6 +22,14 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+//    public override fun onStart(){
+//        super.onStart()
+//        val currentUser = auth.currentUser
+//        if(currentUser != null){
+////            reload()
+//        }
+//    }
 }
 
 
