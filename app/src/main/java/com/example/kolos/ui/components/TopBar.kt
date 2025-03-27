@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.kolos.database.FavouriteCoinViewModel
+import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.example.kolos.functions.coinDataToEncodedJson
 import com.example.kolos.functions.coinToFavouriteCoin
 import com.example.kolos.network.CoinData

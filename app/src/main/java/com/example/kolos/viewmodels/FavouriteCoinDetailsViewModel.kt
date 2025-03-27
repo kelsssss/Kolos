@@ -1,8 +1,6 @@
-package com.example.kolos
+package com.example.kolos.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.example.kolos.network.ApiService
-import com.example.kolos.network.CoinData
 import com.example.kolos.network.CoinDataById
 import com.example.kolos.network.RetrofitClient
 import kotlinx.coroutines.CoroutineScope

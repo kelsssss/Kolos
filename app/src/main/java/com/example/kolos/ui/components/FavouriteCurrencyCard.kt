@@ -33,7 +33,7 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.example.kolos.R
 import com.example.kolos.database.FavouriteCoin
-import com.example.kolos.database.FavouriteCoinViewModel
+import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import kotlinx.coroutines.launch
 
 @Composable

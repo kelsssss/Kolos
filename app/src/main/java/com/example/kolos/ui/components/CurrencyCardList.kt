@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.kolos.MainViewModel
+import com.example.kolos.viewmodels.MainViewModel
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.theme.KolosTheme
 import kotlinx.coroutines.launch

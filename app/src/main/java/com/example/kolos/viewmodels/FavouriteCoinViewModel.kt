@@ -1,13 +1,15 @@
-package com.example.kolos.database
+package com.example.kolos.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kolos.database.CoinsDatabase
+import com.example.kolos.database.FavouriteCoin
 import kotlinx.coroutines.launch
 
 class FavouriteCoinViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val db = CoinsDatabase.getInstance(application)
+    private val db = CoinsDatabase.Companion.getInstance(application)
     private val dbDao = db.coinsDao()
 
     val allCoins = dbDao.getAll()

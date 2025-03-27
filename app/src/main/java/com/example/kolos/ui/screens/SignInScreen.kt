@@ -27,18 +27,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kolos.ui.theme.KolosTheme
+import com.example.kolos.viewmodels.FirebaseAuthViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 @Composable
-fun SignInScreen(navController: NavController){
+fun SignInScreen(navController: NavController, authViewModel: FirebaseAuthViewModel = viewModel()){
     var context = LocalContext.current
     var email by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
-    var auth = Firebase.auth
+    var auth = authViewModel.auth
     Log.d("MyLog", "User email: ${auth.currentUser?.email}")
 
 //    if(auth.currentUser != null){
@@ -76,7 +78,7 @@ fun SignInScreen(navController: NavController){
 
             Button(
                 onClick = {
-                    signIn(
+                    authViewModel.signIn(
                         email = email,
                         password = password,
                         auth = auth,
@@ -113,23 +115,5 @@ fun SignInScreenPreview(){
     }
 }
 
-private fun signIn(email: String, password: String, auth: FirebaseAuth, navController: NavController, context: Context){
-    auth.signInWithEmailAndPassword(email, password)
-        .addOnCompleteListener { task ->
-            if(task.isSuccessful){
-                Log.d("MyLog", "Sign In Successful!")
-                navController.navigate("main")
-            } else {
-                Log.d("MyLog", "Sign In Failed")
-                Toast.makeText(
-                    context,
-                    "Sign In Failed",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-}
 
-private fun signOut(auth: FirebaseAuth){
-    auth.signOut()
-}
+

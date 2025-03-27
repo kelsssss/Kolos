@@ -1,9 +1,5 @@
-package com.example.kolos
+package com.example.kolos.viewmodels
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.kolos.network.CoinData
 import com.example.kolos.network.RetrofitClient
@@ -12,7 +8,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-
 
 class MainViewModel : ViewModel() {
 

@@ -28,19 +28,21 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kolos.ui.theme.KolosTheme
+import com.example.kolos.viewmodels.FirebaseAuthViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 @Composable
-fun SignUpScreen(navController: NavController){
+fun SignUpScreen(navController: NavController, authViewModel: FirebaseAuthViewModel = viewModel()){
     var context = LocalContext.current
     var email by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
 
-    var auth = Firebase.auth
+    var auth = authViewModel.auth
 
 
     Scaffold { innerPadding ->
@@ -71,7 +73,12 @@ fun SignUpScreen(navController: NavController){
 
             Button(
                 onClick = {
-                    signUp(email = email, password = password, auth = auth, navController = navController, context = context)
+                    authViewModel.signUp(
+                        email = email,
+                        password = password,
+                        auth = auth,
+                        navController = navController,
+                        context = context)
                 }
             ) {
                 Text(text = "Create account")
@@ -104,20 +111,5 @@ fun SignUpScreenPreview(){
     }
 }
 
-private fun signUp(email: String, password: String, auth: FirebaseAuth, navController: NavController, context: Context){
-    auth.createUserWithEmailAndPassword(email, password)
-        .addOnCompleteListener { task ->
-            if(task.isSuccessful){
-                Log.d("MyLog", "Sign Up Successful!")
-                navController.navigate("main")
-            } else {
-                Log.d("MyLog", "Sign Up Failed")
-                Toast.makeText(
-                    context,
-                    "Sign Up Failed",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-}
+
 

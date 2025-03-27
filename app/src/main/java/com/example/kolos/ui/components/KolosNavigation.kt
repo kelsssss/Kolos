@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.kolos.functions.encodedJsonToCoin
 import com.example.kolos.network.CoinData
+import com.example.kolos.ui.screens.AccountScreen
 import com.example.kolos.ui.screens.CoinDetailsScreen
 import com.example.kolos.ui.screens.FavouriteCoinScreen
 import com.example.kolos.ui.screens.FavouriteScreen
@@ -76,6 +77,12 @@ fun KolosNavigation() {
             route = "signIn",
         ) {
             SignInScreen(navController = navController)
+        }
+
+        composable(
+            route = "account",
+        ) {
+            AccountScreen(navController = navController)
         }
     }
 }

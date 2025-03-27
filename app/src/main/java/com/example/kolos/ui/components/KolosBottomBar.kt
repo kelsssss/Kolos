@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.sharp.Favorite
@@ -69,6 +71,25 @@ fun KolosBottomBar(navController: NavController) {
                         )
                         else -> Icon(
                             imageVector = Icons.Outlined.FavoriteBorder,
+                            contentDescription = null,
+                            modifier = Modifier.size(35.dp)
+                        )
+                    }
+
+                }
+                Spacer(modifier = Modifier.width(40.dp))
+
+                IconButton(
+                    onClick = { navController.navigate("account") }
+                ) {
+                    when(currentRoute1){
+                        "account" -> Icon(
+                            imageVector = Icons.Default.AccountCircle,
+                            contentDescription = null,
+                            modifier = Modifier.size(35.dp)
+                        )
+                        else -> Icon(
+                            imageVector = Icons.Outlined.AccountCircle,
                             contentDescription = null,
                             modifier = Modifier.size(35.dp)
                         )
