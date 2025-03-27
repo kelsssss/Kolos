@@ -12,6 +12,8 @@ import com.example.kolos.ui.screens.CoinDetailsScreen
 import com.example.kolos.ui.screens.FavouriteCoinScreen
 import com.example.kolos.ui.screens.FavouriteScreen
 import com.example.kolos.ui.screens.MainScreen
+import com.example.kolos.ui.screens.SignInScreen
+import com.example.kolos.ui.screens.SignUpScreen
 import com.google.gson.Gson
 import java.net.URLDecoder
 
@@ -21,7 +23,8 @@ fun KolosNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = "main"
+//        startDestination = "main"
+        startDestination = "signIn"
     ) {
         composable(
             route = "main",
@@ -61,6 +64,18 @@ fun KolosNavigation() {
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getString("id")
             FavouriteCoinScreen(navController = navController, coinId = id!!)
+        }
+
+        composable(
+            route = "signUp",
+        ) {
+            SignUpScreen(navController = navController)
+        }
+
+        composable(
+            route = "signIn",
+        ) {
+            SignInScreen(navController = navController)
         }
     }
 }

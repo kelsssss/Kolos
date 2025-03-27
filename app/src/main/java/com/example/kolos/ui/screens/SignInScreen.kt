@@ -1,12 +1,16 @@
 package com.example.kolos.ui.screens
 
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -19,60 +23,85 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.kolos.ui.theme.KolosTheme
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 @Composable
-fun SignInScreen(){
+fun SignInScreen(navController: NavController){
+    var context = LocalContext.current
     var email by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
+    var auth = Firebase.auth
+    Log.d("MyLog", "User email: ${auth.currentUser?.email}")
+
+//    if(auth.currentUser != null){
+//        navController.navigate("main")
+//    }
+
+    Scaffold { innerPadding ->
+
+        Column(
+            modifier = Modifier.fillMaxSize().padding(innerPadding),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 //        Box(contentAlignment = Alignment.Center){
 
-        Text(text = "Log In", fontSize = 40.sp)
-        Spacer(modifier = Modifier.height(20.dp))
+            Text(text = "Log In", fontSize = 40.sp)
+            Spacer(modifier = Modifier.height(20.dp))
 
-        OutlinedTextField(
-            value = email,
-            onValueChange = {email = it},
-            label = {Text(text = "Email")},
-            placeholder = {Text(text = "example@mail.com")},
-        )
+            OutlinedTextField(
+                value = email,
+                onValueChange = { email = it },
+                label = { Text(text = "Email") },
+                placeholder = { Text(text = "example@mail.com") },
+            )
 
-        Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-        OutlinedTextField(
-            value = password,
-            onValueChange = {password = it},
-            label = {Text(text = "Password")},
-            placeholder = {Text(text = "password")}
-        )
-        Spacer(modifier = Modifier.height(10.dp))
+            OutlinedTextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text(text = "Password") },
+                placeholder = { Text(text = "password") }
+            )
+            Spacer(modifier = Modifier.height(10.dp))
 
-        Button(
-            onClick = {}
-        ) {
-            Text(text = "Log In")
-        }
+            Button(
+                onClick = {
+                    signIn(
+                        email = email,
+                        password = password,
+                        auth = auth,
+                        navController = navController,
+                        context = context
+                    )
+                }
+            ) {
+                Text(text = "Log In")
+            }
 
-        Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-        Text(text = "Don't have an account?")
+            Text(text = "Don't have an account?")
 
-//        Spacer(modifier = Modifier.height(20.dp))
 
-        Button(
-            onClick = {}
-        ) {
-            Text(text = "Create account")
-        }
+            Button(
+                onClick = {
+                    navController.navigate("signUp")
+                }
+            ) {
+                Text(text = "Create account")
+            }
 //        }
+        }
     }
 }
 
@@ -80,6 +109,27 @@ fun SignInScreen(){
 @Composable
 fun SignInScreenPreview(){
     KolosTheme {
-        SignInScreen()
+//        SignInScreen()
     }
+}
+
+private fun signIn(email: String, password: String, auth: FirebaseAuth, navController: NavController, context: Context){
+    auth.signInWithEmailAndPassword(email, password)
+        .addOnCompleteListener { task ->
+            if(task.isSuccessful){
+                Log.d("MyLog", "Sign In Successful!")
+                navController.navigate("main")
+            } else {
+                Log.d("MyLog", "Sign In Failed")
+                Toast.makeText(
+                    context,
+                    "Sign In Failed",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+}
+
+private fun signOut(auth: FirebaseAuth){
+    auth.signOut()
 }
