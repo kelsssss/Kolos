@@ -62,8 +62,6 @@ fun SignInScreen(navController: NavController, authViewModel: FirebaseAuthViewMo
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-//        Box(contentAlignment = Alignment.Center){
-
             Text(text = "Log In", fontSize = 40.sp)
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -88,33 +86,17 @@ fun SignInScreen(navController: NavController, authViewModel: FirebaseAuthViewMo
                         VisualTransformation.None
                     },
                 trailingIcon = {
-                    when(passwordIsVisible){
-                        true -> {
-                            IconButton(
-                                onClick = {
-                                    passwordIsVisible = !passwordIsVisible
-                                }
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Filled.VisibilityOff,
-                                    contentDescription = null
-                                )
-                            }
+                    IconButton(
+                        onClick = {
+                            passwordIsVisible = !passwordIsVisible
                         }
-                        false -> {
-                            IconButton(
-                                onClick = {
-                                    passwordIsVisible = !passwordIsVisible
-                                }
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Filled.Visibility,
-                                    contentDescription = null
+                    ) {
+                        Icon(
+                            imageVector = if(passwordIsVisible) Icons.Filled.VisibilityOff
+                            else Icons.Filled.Visibility,
+                            contentDescription = null
                                 )
-                            }
-                        }
                     }
-
                 }
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -145,7 +127,6 @@ fun SignInScreen(navController: NavController, authViewModel: FirebaseAuthViewMo
             ) {
                 Text(text = "Create account")
             }
-//        }
         }
     }
 }
