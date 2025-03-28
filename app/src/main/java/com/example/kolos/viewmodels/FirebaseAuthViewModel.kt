@@ -3,6 +3,7 @@ package com.example.kolos.viewmodels
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.google.firebase.Firebase
