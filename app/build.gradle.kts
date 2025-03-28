@@ -94,6 +94,7 @@ dependencies {
     //firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
 
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material.icons.extended)

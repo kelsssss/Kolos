@@ -36,11 +36,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.kolos.database.FavouriteCoin
 import com.example.kolos.ui.theme.KolosTheme
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun SignInScreen(navController: NavController, authViewModel: FirebaseAuthViewModel = viewModel()){

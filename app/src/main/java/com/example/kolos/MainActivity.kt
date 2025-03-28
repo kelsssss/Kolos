@@ -11,14 +11,19 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 class MainActivity : ComponentActivity() {
-//    private lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        auth = Firebase.auth
+        auth = Firebase.auth
         enableEdgeToEdge()
         setContent {
             KolosTheme {
-                KolosNavigation()
+                if(auth.currentUser != null){
+                    KolosNavigation(startDestination = "main")
+                } else{
+                    KolosNavigation(startDestination = "signIn")
+                }
+
             }
         }
     }

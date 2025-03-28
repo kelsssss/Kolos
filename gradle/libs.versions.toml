@@ -67,7 +67,7 @@ plot = { module = "com.github.madrapps:plot", version.ref = "plot" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "bomVersion" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth"}
-
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx"}
 
 
 

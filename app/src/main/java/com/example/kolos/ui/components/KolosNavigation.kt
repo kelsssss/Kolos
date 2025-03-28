@@ -19,13 +19,15 @@ import com.google.gson.Gson
 import java.net.URLDecoder
 
 @Composable
-fun KolosNavigation() {
+fun KolosNavigation(
+    startDestination: String
+) {
     var navController = rememberNavController()
 
     NavHost(
         navController = navController,
 //        startDestination = "main"
-        startDestination = "signIn"
+        startDestination = startDestination
     ) {
         composable(
             route = "main",
