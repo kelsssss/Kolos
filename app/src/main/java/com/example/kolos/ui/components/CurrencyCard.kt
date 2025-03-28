@@ -15,6 +15,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import coil.compose.SubcomposeAsyncImage
 import com.example.kolos.R
 import com.example.kolos.functions.coinDataToEncodedJson
@@ -32,31 +34,43 @@ import com.google.gson.Gson
 import java.net.URLEncoder
 
 @Composable
-fun CurrencyCard(navController: NavController, coinData: CoinData) {
+fun CurrencyCard(
+    navController: NavController,
+    coinData: CoinData,
+    cardModifier: Modifier,
+    imageModifier: Modifier
+) {
 
     val encodedCoinDataJson = coinDataToEncodedJson(coinData)
 
+    var clickableModifier = remember(cardModifier) {
+        cardModifier.clickable(onClick = { navController.navigate("details/$encodedCoinDataJson") })
+    }
+
+
+
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp, start = 10.dp, end = 10.dp)
-            .height(70.dp)
-            .clickable(onClick = { navController.navigate("details/$encodedCoinDataJson") })
+        modifier = clickableModifier
     ) {
+//            Modifier
+//            .fillMaxWidth()
+//            .padding(top = 10.dp, start = 10.dp, end = 10.dp)
+//            .height(70.dp)
+
         Row(
             modifier = Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
             SubcomposeAsyncImage(
+//            AsyncImage(
                 model = coinData.image,
                 contentDescription = null,
-                modifier = Modifier
-                    .padding(start = 10.dp, top = 7.dp, bottom = 7.dp)
+                modifier = imageModifier
                     .size(50.dp),
                 loading = {
                     CircularProgressIndicator(
-                        modifier = Modifier.padding(start = 10.dp, top = 7.dp, bottom = 7.dp),
+                        modifier = imageModifier,
                         color = Color.White
                     )
                 },
@@ -64,7 +78,7 @@ fun CurrencyCard(navController: NavController, coinData: CoinData) {
                     Image(
                         painter = painterResource(R.drawable.error),
                         contentDescription = null,
-                        modifier = Modifier.padding(start = 10.dp, top = 7.dp, bottom = 7.dp)
+                        modifier = imageModifier
                     )
                 }
             )

@@ -1,6 +1,7 @@
 package com.example.kolos.viewmodels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.kolos.network.CoinData
 import com.example.kolos.network.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
@@ -18,7 +19,8 @@ class MainViewModel : ViewModel() {
 
     fun fetchCoinsData() {
         isLoading.value = true
-        CoroutineScope(Dispatchers.IO).launch {
+//        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch {
             try {
                 val response = RetrofitClient.apiService.getCoinsData()
                 _coinData.value = response
