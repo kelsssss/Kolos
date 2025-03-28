@@ -99,14 +99,6 @@ fun AccountScreen(navController: NavController, authViewModel: FirebaseAuthViewM
             AlertDialogOnDeleteUser(
                 showDialog = showDialog,
                 onDismiss = { showDialog = false},
-//                onConfirm = {email, password ->
-//                    authViewModel.deleteUser(
-//                        auth = auth,
-//                        email = email,
-//                        password = password
-//                        )
-//                    navController.navigate("signIn")
-//                },
                 authViewModel = authViewModel,
                 navController = navController
             )
