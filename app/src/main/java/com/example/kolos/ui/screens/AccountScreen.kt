@@ -30,13 +30,21 @@ import androidx.navigation.NavController
 import com.example.kolos.ui.components.AlertDialogOnDeleteUser
 import com.example.kolos.ui.components.KolosBottomBar
 import com.example.kolos.ui.components.MainTopBar
+import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AccountScreen(navController: NavController, authViewModel: FirebaseAuthViewModel = viewModel()){
+fun AccountScreen(
+    navController: NavController,
+    authViewModel: FirebaseAuthViewModel = viewModel(),
+    favouriteCoinViewModel: FavouriteCoinViewModel = viewModel()
+    ){
+
     var showDialog by remember { mutableStateOf(false) }
+    var showDialogToExit by remember {mutableStateOf(false)}
     var auth = authViewModel.auth
+
     Scaffold(
         topBar = {
             MainTopBar(
@@ -69,8 +77,10 @@ fun AccountScreen(navController: NavController, authViewModel: FirebaseAuthViewM
 
             Button(
                 onClick = {
-                    authViewModel.signOut(auth)
-                    navController.navigate("signIn")
+                    showDialogToExit = true
+//                    authViewModel.signOut(auth)
+//                    favouriteCoinViewModel.deleteAllCoins()
+//                    navController.navigate("signIn")
                 }
             ) {
                 Text(text = "Выйти")
@@ -100,10 +110,37 @@ fun AccountScreen(navController: NavController, authViewModel: FirebaseAuthViewM
                 showDialog = showDialog,
                 onDismiss = { showDialog = false},
                 authViewModel = authViewModel,
-                navController = navController
+                navController = navController,
             )
         }
 
+        if(showDialogToExit){
+            AlertDialog(
+                onDismissRequest = { showDialogToExit = false},
+                title ={ Text(text = "Вы выйдете из аккаунта, уверены?" ) },
+                dismissButton = {
+                    Button(
+                        onClick = {
+                            showDialogToExit = false
+                        }
+                    ) {
+                        Text(text = "Отмена")
+                    }
+                },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            authViewModel.signOut(auth)
+                            favouriteCoinViewModel.deleteAllCoins()
+                            showDialogToExit = false
+                            navController.navigate("signIn")
+                        }
+                    ) {
+                        Text(text = "Уверен!")
+                    }
+                }
 
+            )
+        }
     }
 }

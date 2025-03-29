@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.google.firebase.Firebase
 import com.google.firebase.auth.EmailAuthCredential
@@ -50,7 +51,9 @@ class FirebaseAuthViewModel: ViewModel() {
     }
 
 
-    fun signOut(auth: FirebaseAuth){
+    fun signOut(
+        auth: FirebaseAuth,
+    ){
         auth.signOut()
     }
 

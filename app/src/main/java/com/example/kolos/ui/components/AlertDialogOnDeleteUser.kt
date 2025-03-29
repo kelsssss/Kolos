@@ -19,14 +19,15 @@ fun AlertDialogOnDeleteUser(
     showDialog: Boolean,
     onDismiss: () -> Unit,
     navController: NavController,
-    authViewModel: FirebaseAuthViewModel
+    authViewModel: FirebaseAuthViewModel,
+//    onSuccess: (String, String) -> Unit
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
     AlertDialog(
         onDismissRequest = { onDismiss() },
-        title = {Text(text = "Введите данные для подтверждения удаления")},
+        title = {Text(text = "Введите свои данные для подтверждения удаления")},
         text = {
             Column {
                 TextField(

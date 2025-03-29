@@ -20,4 +20,7 @@ interface CoinsDao {
 
     @Query("SELECT COUNT(*) FROM favourite_coin_table WHERE name = :name")
     suspend fun isCoinFavourite(name: String): Int
+
+    @Query("DELETE FROM favourite_coin_table")
+    suspend fun deleteAllCoins()
 }

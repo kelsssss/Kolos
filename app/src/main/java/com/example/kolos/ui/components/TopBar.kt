@@ -1,5 +1,6 @@
 package com.example.kolos.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 //import androidx.compose.foundation.lazy.LazyColumn
@@ -36,6 +37,7 @@ import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.example.kolos.functions.coinDataToEncodedJson
 import com.example.kolos.functions.coinToFavouriteCoin
 import com.example.kolos.network.CoinData
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
@@ -59,6 +61,11 @@ fun MainTopBar(
     var searchText by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     var fs = Firebase.firestore
+    var uid = Firebase.auth.currentUser?.uid ?: run {
+        navController.navigate("signIn")
+        Log.w("MyLog", "User not authenticated")
+        return
+    }
 
     var filteredCoins = coinsData?.filter {
         it.name.contains(searchText, ignoreCase = true)
@@ -162,7 +169,8 @@ fun MainTopBar(
                                 true -> { favouriteCoinViewModel.viewModelScope.launch {
                                     favouriteCoinViewModel.deleteCoin(coinData!!.id)
                                 }
-                                    fs.collection("test").document(coinData!!.id).delete()
+//                                    fs.collection("test").document(coinData!!.id).delete()
+                                    fs.collection("test").document(uid).collection("coins").document(coinData!!.id)
                                 }
                             }
 

@@ -30,6 +30,12 @@ class FavouriteCoinViewModel(application: Application) : AndroidViewModel(applic
         return dbDao.isCoinFavourite(name)
     }
 
+    fun deleteAllCoins(){
+        viewModelScope.launch {
+            dbDao.deleteAllCoins()
+        }
+    }
+
 
 
 }
