@@ -27,6 +27,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.kolos.ui.components.AlertDialogOnChangePassword
 import com.example.kolos.ui.components.AlertDialogOnDeleteUser
 import com.example.kolos.ui.components.KolosBottomBar
 import com.example.kolos.ui.components.MainTopBar
@@ -43,6 +44,7 @@ fun AccountScreen(
 
     var showDialog by remember { mutableStateOf(false) }
     var showDialogToExit by remember {mutableStateOf(false)}
+    var showDialogToChangePassword by remember {mutableStateOf(false)}
     var auth = authViewModel.auth
 
     Scaffold(
@@ -85,6 +87,21 @@ fun AccountScreen(
             ) {
                 Text(text = "Выйти")
             }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text(text = "Обновить пароль:")
+            Spacer(modifier = Modifier.height(10.dp))
+
+
+            Button(
+                onClick = {
+                    showDialogToChangePassword = true
+                }
+            ) {
+                Text(text = "Сменить пароль")
+            }
+
             Spacer(modifier = Modifier.height(20.dp))
 
 
@@ -100,10 +117,13 @@ fun AccountScreen(
                     containerColor = Color.Red,
                     contentColor = Color.White,
                     disabledContentColor = ButtonDefaults.buttonColors().disabledContentColor,
-                    disabledContainerColor = ButtonDefaults.buttonColors().disabledContainerColor)
+                    disabledContainerColor = ButtonDefaults.buttonColors().disabledContainerColor
+                )
             ) {
                 Text(text = "Удалить")
             }
+
+
         }
         if(showDialog){
             AlertDialogOnDeleteUser(
@@ -140,6 +160,14 @@ fun AccountScreen(
                     }
                 }
 
+            )
+        }
+        if(showDialogToChangePassword){
+            AlertDialogOnChangePassword(
+                showDialog = showDialogToChangePassword,
+                onDismiss = { showDialogToChangePassword = false },
+                navController = navController,
+                authViewModel = authViewModel
             )
         }
     }

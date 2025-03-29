@@ -76,5 +76,16 @@ class FirebaseAuthViewModel: ViewModel() {
         }
     }
 
+    fun updatePassword(auth: FirebaseAuth, email: String, password: String, newPassword: String){
+        val credential = EmailAuthProvider.getCredential(email, password)
+        auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener { task ->
+            if(task.isSuccessful){
+                auth.currentUser?.updatePassword(newPassword)
+            } else {
+                Log.d("MyLog", "reauthenticate failed")
+            }
+        }
+    }
+
 
 }
