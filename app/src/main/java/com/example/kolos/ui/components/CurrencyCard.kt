@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,6 +27,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.compose.SubcomposeAsyncImage
+import coil.request.CachePolicy
+import coil.request.ImageRequest
+import coil.size.Size
 import com.example.kolos.R
 import com.example.kolos.functions.coinDataToEncodedJson
 import com.example.kolos.network.CoinData
@@ -64,7 +68,14 @@ fun CurrencyCard(
         ) {
             SubcomposeAsyncImage(
 //            AsyncImage(
-                model = coinData.image,
+//                model = coinData.image,
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(coinData.image)
+                    .size(Size(50,50))
+                    .diskCachePolicy(CachePolicy.ENABLED)
+                    .memoryCachePolicy(CachePolicy.ENABLED)
+                    .crossfade(false)
+                    .build(),
                 contentDescription = null,
                 modifier = imageModifier
                     .size(50.dp),

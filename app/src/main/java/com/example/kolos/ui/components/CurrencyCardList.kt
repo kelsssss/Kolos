@@ -67,7 +67,12 @@ fun CurrencyCardList(
         }
     ) {
         LazyColumn {
-            items(coinData) { coinData ->
+            items(
+                items = coinData,
+                key = {it.id},
+                contentType = {"card"}
+
+            ) { coinData ->
                 CurrencyCard(navController, coinData, cardModifier, imageModifier)
             }
         }
