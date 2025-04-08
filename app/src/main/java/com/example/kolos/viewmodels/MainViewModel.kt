@@ -13,9 +13,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
-    private val apiService: ApiService
+//@HiltViewModel
+class MainViewModel
+//@Inject constructor
+    (
+//    private val apiService: ApiService
 ) : ViewModel() {
 
     private val _coinData = MutableStateFlow<List<CoinData>?>(null)
@@ -29,7 +31,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             try {
 //                val response = RetrofitClient.apiService.getCoinsData()
-                val response = apiService.getCoinsData()
+                val response = RetrofitClient.apiService.getCoinsData()
                 _coinData.value = response
             } catch (e: Exception) {
                 e.printStackTrace()

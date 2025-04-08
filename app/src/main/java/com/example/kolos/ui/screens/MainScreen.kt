@@ -1,5 +1,6 @@
 package com.example.kolos.ui.screens
 
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,9 +22,16 @@ import com.example.kolos.ui.components.CurrencyCardList
 import com.example.kolos.ui.components.KolosBottomBar
 import com.example.kolos.ui.components.MainTopBar
 import com.example.kolos.ui.theme.KolosTheme
+import kotlin.getValue
+//import androidx.hilt.navigation.compose.hiltViewModel
+
 
 @Composable
-fun MainScreen(viewModel: MainViewModel = viewModel(), navController: NavController) {
+fun MainScreen(
+    viewModel: MainViewModel = viewModel(),
+    navController: NavController
+) {
+//    val viewModel: MainViewModel = hiltViewModel()
     val coinsData by viewModel.coinData.collectAsState()
 
     LaunchedEffect(Unit) {

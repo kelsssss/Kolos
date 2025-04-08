@@ -32,6 +32,7 @@ import com.example.kolos.database.FavouriteCoin
 import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.components.Chart
+import com.example.kolos.ui.components.Convertation
 import com.example.kolos.ui.components.MainTopBar
 import kotlinx.coroutines.launch
 
@@ -83,6 +84,7 @@ fun CoinDetailsScreen(
             }
 
             Text(text = "Цена: ${coinData.price}$", fontSize = 30.sp, modifier = Modifier.padding(bottom = 20.dp))
+            Convertation(coinData = coinData)
 
 //            Row {
 //                Spacer(modifier = Modifier.weight(1f))
