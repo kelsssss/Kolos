@@ -22,11 +22,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.kolos.R
 import com.example.kolos.ui.components.AlertDialogOnChangePassword
 import com.example.kolos.ui.components.AlertDialogOnDeleteUser
 import com.example.kolos.ui.components.KolosBottomBar
@@ -50,7 +52,7 @@ fun AccountScreen(
     Scaffold(
         topBar = {
             MainTopBar(
-            text = "Account",
+            text = stringResource(R.string.account),
             navController = navController
             )
         },
@@ -61,19 +63,21 @@ fun AccountScreen(
         }
     ) { innerPadding->
         Column(
-            modifier = Modifier.fillMaxSize().padding(innerPadding),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
 //            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text(text = "Ваша почта:")
+            Text(text = stringResource(R.string.your_email))
 
             Text(text = "${auth.currentUser?.email}")
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text(text = "Выйти из аккаунта:")
+            Text(text = stringResource(R.string.log_out))
             Spacer(modifier = Modifier.height(10.dp))
 
 
@@ -85,12 +89,12 @@ fun AccountScreen(
 //                    navController.navigate("signIn")
                 }
             ) {
-                Text(text = "Выйти")
+                Text(text = stringResource(R.string.log_out_button))
             }
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text(text = "Обновить пароль:")
+            Text(text = stringResource(R.string.change_password))
             Spacer(modifier = Modifier.height(10.dp))
 
 
@@ -99,13 +103,13 @@ fun AccountScreen(
                     showDialogToChangePassword = true
                 }
             ) {
-                Text(text = "Сменить пароль")
+                Text(text = stringResource(R.string.change_password_button))
             }
 
             Spacer(modifier = Modifier.height(20.dp))
 
 
-            Text(text = "Удалить аккаунт:")
+            Text(text = stringResource(R.string.delete_account))
             Spacer(modifier = Modifier.height(10.dp))
 
             Button(
@@ -120,7 +124,7 @@ fun AccountScreen(
                     disabledContainerColor = ButtonDefaults.buttonColors().disabledContainerColor
                 )
             ) {
-                Text(text = "Удалить")
+                Text(text = stringResource(R.string.delete_button))
             }
 
 
@@ -137,14 +141,14 @@ fun AccountScreen(
         if(showDialogToExit){
             AlertDialog(
                 onDismissRequest = { showDialogToExit = false},
-                title ={ Text(text = "Вы выйдете из аккаунта, уверены?" ) },
+                title ={ Text(text = stringResource(R.string.log_out_confirmation_text) ) },
                 dismissButton = {
                     Button(
                         onClick = {
                             showDialogToExit = false
                         }
                     ) {
-                        Text(text = "Отмена")
+                        Text(text = stringResource(R.string.cancel_button))
                     }
                 },
                 confirmButton = {
@@ -156,7 +160,7 @@ fun AccountScreen(
                             navController.navigate("signIn")
                         }
                     ) {
-                        Text(text = "Уверен!")
+                        Text(text = stringResource(R.string.i_am_sure_button))
                     }
                 }
 

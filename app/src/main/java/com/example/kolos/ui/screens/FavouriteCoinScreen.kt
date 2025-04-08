@@ -28,6 +28,7 @@ import com.example.kolos.R
 import com.example.kolos.ui.components.Chart
 import com.example.kolos.ui.components.MainTopBar
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import com.example.kolos.functions.coinDataByIdToCoinData
 
 @Composable
@@ -49,7 +50,7 @@ fun FavouriteCoinScreen(
         topBar = {
             fetchedCoinData?.let {
                 MainTopBar(
-                    text = "Details",
+                    text = stringResource(R.string.details_top_bar),
                     navController = navController,
                     isCloseButtonNeeded = true,
                     isFavouriteButtonNeeded = true,
@@ -121,7 +122,8 @@ fun FavouriteCoinScreen(
                 }
 
                 Text(
-                    text = "Цена: ${coinData.marketData.price.usd}$",
+                    text = stringResource(R.string.price, coinData.marketData.price.usd),
+//                        "Цена: ${coinData.marketData.price.usd}$",
                     fontSize = 30.sp,
                     modifier = Modifier.padding(bottom = 20.dp)
                 )

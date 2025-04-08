@@ -14,9 +14,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.kolos.R
 import com.example.kolos.viewmodels.MainViewModel
 import com.example.kolos.ui.components.CurrencyCardList
 import com.example.kolos.ui.components.KolosBottomBar
@@ -40,7 +42,7 @@ fun MainScreen(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { MainTopBar("Coins", navController, coinsData = coinsData, isSearchNeeded = true) },
+        topBar = { MainTopBar(stringResource(R.string.MainScreenTopBar), navController, coinsData = coinsData, isSearchNeeded = true) },
         bottomBar = { KolosBottomBar(navController) },
     ) { innerPadding ->
         Column(

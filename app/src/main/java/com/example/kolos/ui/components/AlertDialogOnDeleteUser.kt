@@ -10,7 +10,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.example.kolos.R
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
 
 
@@ -27,18 +29,18 @@ fun AlertDialogOnDeleteUser(
 
     AlertDialog(
         onDismissRequest = { onDismiss() },
-        title = {Text(text = "Введите свои данные для подтверждения удаления")},
+        title = {Text(text = stringResource(R.string.enter_your_data_to_confirm_deletion))},
         text = {
             Column {
                 TextField(
                     value = email,
                     onValueChange = {email = it},
-                    label = {Text(text = "Email")}
+                    label = {Text(text = stringResource(R.string.email))}
                 )
                 TextField(
                     value = password,
                     onValueChange = {password = it},
-                    label = {Text(text = "Password")}
+                    label = {Text(text = stringResource(R.string.password) )}
                 )
             }
         },
@@ -54,7 +56,7 @@ fun AlertDialogOnDeleteUser(
                     onDismiss()
                 }
             ) {
-                Text(text = "Delete")
+                Text(text = stringResource(R.string.delete_button))
             }
         },
         dismissButton = {
@@ -63,7 +65,7 @@ fun AlertDialogOnDeleteUser(
                     onDismiss()
                 }
             ){
-                Text(text = "Cancel")
+                Text(text = stringResource(R.string.cancel_button))
             }
         },
         )

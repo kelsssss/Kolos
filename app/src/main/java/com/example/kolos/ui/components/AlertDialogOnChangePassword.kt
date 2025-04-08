@@ -10,7 +10,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.example.kolos.R
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
 
 
@@ -29,23 +31,23 @@ fun AlertDialogOnChangePassword(
 
     AlertDialog(
         onDismissRequest = { onDismiss() },
-        title = {Text(text = "Введите свои данные и желаемый пароль")},
+        title = {Text(text = stringResource(R.string.enter_your_data_and_new_password))},
         text = {
             Column {
                 TextField(
                     value = email,
                     onValueChange = {email = it},
-                    label = {Text(text = "Email")}
+                    label = {Text(text = stringResource(R.string.email))}
                 )
                 TextField(
                     value = password,
                     onValueChange = {password = it},
-                    label = {Text(text = "Old Password")}
+                    label = {Text(text = stringResource(R.string.old_password))}
                 )
                 TextField(
                     value = newPassword,
                     onValueChange = {newPassword = it},
-                    label = {Text(text = "New Password")}
+                    label = {Text(text = stringResource(R.string.new_password))}
                 )
             }
         },
@@ -62,7 +64,7 @@ fun AlertDialogOnChangePassword(
                     onDismiss()
                 }
             ) {
-                Text(text = "Update")
+                Text(text = stringResource(R.string.update))
             }
         },
         dismissButton = {
@@ -71,7 +73,7 @@ fun AlertDialogOnChangePassword(
                     onDismiss()
                 }
             ){
-                Text(text = "Cancel")
+                Text(text = stringResource(R.string.cancel_button))
             }
         },
     )

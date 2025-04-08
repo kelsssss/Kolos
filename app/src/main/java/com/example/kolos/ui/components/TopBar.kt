@@ -28,11 +28,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 //import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.kolos.R
 import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.example.kolos.functions.coinDataToEncodedJson
 import com.example.kolos.functions.coinToFavouriteCoin
@@ -102,7 +104,7 @@ fun MainTopBar(
                             modifier = Modifier
                                 .menuAnchor(MenuAnchorType.PrimaryEditable)
                                 .fillMaxWidth(),
-                            placeholder = { Text("Поиск монеты...") },
+                            placeholder = { Text(stringResource(R.string.search_coin)) },
                             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
                             trailingIcon = {
                                 ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
@@ -116,7 +118,7 @@ fun MainTopBar(
                         ) {
                             if (filteredCoins.isEmpty()) {
                                 DropdownMenuItem(
-                                    text = { Text("Ничего не найдено") },
+                                    text = { Text(stringResource(R.string.nothing_found)) },
                                     onClick = { expanded = false }
                                 )
                             } else {

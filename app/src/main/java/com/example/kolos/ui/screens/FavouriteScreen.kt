@@ -17,9 +17,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.kolos.R
 import com.example.kolos.database.FavouriteCoin
 import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.example.kolos.network.CoinData
@@ -30,15 +32,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-//rules_version = '2';
-//
-//service cloud.firestore {
-//    match /databases/{database}/documents {
-//        match /{document=**} {
-//            allow read, write: if true;
-//        }
-//    }
-//}
 
 @Composable
 fun FavouriteScreen(
@@ -57,7 +50,7 @@ fun FavouriteScreen(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { MainTopBar("Favourite", navController) },
+        topBar = { MainTopBar(stringResource(R.string.favourite), navController) },
         bottomBar = { KolosBottomBar(navController) }
     ) { innerPadding ->
 
@@ -87,7 +80,9 @@ fun FavouriteScreen(
 //        }
 
 
-        Column(modifier = Modifier.padding(innerPadding).verticalScroll(rememberScrollState())) {
+        Column(modifier = Modifier
+            .padding(innerPadding)
+            .verticalScroll(rememberScrollState())) {
             coins.value.forEach { coin ->
                 FavouriteCurrencyCard(
                     navController = navController,

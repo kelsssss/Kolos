@@ -31,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.kolos.R
 import com.example.kolos.ui.theme.KolosTheme
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
 import com.google.firebase.Firebase
@@ -57,18 +59,20 @@ fun SignUpScreen(navController: NavController, authViewModel: FirebaseAuthViewMo
 
     Scaffold { innerPadding ->
         Column(
-            modifier = Modifier.fillMaxSize().padding(innerPadding),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Text(text = "Create account", fontSize = 40.sp)
+            Text(text = stringResource(R.string.create_account), fontSize = 40.sp)
             Spacer(modifier = Modifier.height(20.dp))
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = { Text(text = "Email") },
-                placeholder = { Text(text = "example@mail.com") },
+                label = { Text(text = stringResource(R.string.email)) },
+                placeholder = { Text(text = stringResource(R.string.email_placeholder)) },
             )
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -76,8 +80,8 @@ fun SignUpScreen(navController: NavController, authViewModel: FirebaseAuthViewMo
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
-                label = { Text(text = "Password") },
-                placeholder = { Text(text = "password") },
+                label = { Text(text = stringResource(R.string.password)) },
+                placeholder = { Text(text = stringResource(R.string.password_placeholder)) },
                 visualTransformation =
                     if(passwordIsVisible == false) {
                         PasswordVisualTransformation()
@@ -102,15 +106,15 @@ fun SignUpScreen(navController: NavController, authViewModel: FirebaseAuthViewMo
             Spacer(modifier = Modifier.height(20.dp))
 
             if(password != "" && repeatedPassword != "" && password != repeatedPassword){
-                Text(text ="Passwords are not the same!",color = Color.Red)
+                Text(text = stringResource(R.string.passwords_are_not_the_same),color = Color.Red)
                 Spacer(modifier = Modifier.height(10.dp))
             }
 
             OutlinedTextField(
                 value = repeatedPassword,
                 onValueChange = { repeatedPassword = it },
-                label = { Text(text = "Repeat password") },
-                placeholder = { Text(text = "password") },
+                label = { Text(text = stringResource(R.string.repeat_password)) },
+                placeholder = { Text(text = stringResource(R.string.password_placeholder)) },
                 visualTransformation =
                     if(passwordIsVisible == false) {
                         PasswordVisualTransformation()
@@ -143,12 +147,12 @@ fun SignUpScreen(navController: NavController, authViewModel: FirebaseAuthViewMo
                         context = context)
                 }
             ) {
-                Text(text = "Create account")
+                Text(text = stringResource(R.string.create_account))
             }
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text(text = "Already have a account?")
+            Text(text = stringResource(R.string.already_have_a_account))
 
 
             Button(
@@ -156,7 +160,7 @@ fun SignUpScreen(navController: NavController, authViewModel: FirebaseAuthViewMo
                     navController.navigate("signIn")
                 }
             ) {
-                Text(text = "Log in")
+                Text(text = stringResource(R.string.log_in))
             }
 //        }
         }

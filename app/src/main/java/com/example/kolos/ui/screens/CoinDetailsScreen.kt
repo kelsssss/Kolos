@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,7 +44,7 @@ fun CoinDetailsScreen(
     viewModel: FavouriteCoinViewModel = viewModel()
 ) {
     Scaffold(
-        topBar = { MainTopBar("Details", navController = navController, coinData = coinData, isFavouriteButtonNeeded = true, isCloseButtonNeeded = true) },
+        topBar = { MainTopBar(stringResource(R.string.details_top_bar), navController = navController, coinData = coinData, isFavouriteButtonNeeded = true, isCloseButtonNeeded = true) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(
@@ -83,8 +84,9 @@ fun CoinDetailsScreen(
                 Spacer(modifier = Modifier.weight(1f))
             }
 
-            Text(text = "Цена: ${coinData.price}$", fontSize = 30.sp, modifier = Modifier.padding(bottom = 20.dp))
-            Convertation(coinData = coinData)
+            Text(text = stringResource(R.string.price, coinData.price), fontSize = 30.sp, modifier = Modifier.padding(bottom = 20.dp))
+
+//            Convertation(coinData = coinData)
 
 //            Row {
 //                Spacer(modifier = Modifier.weight(1f))
