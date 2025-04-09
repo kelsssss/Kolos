@@ -30,6 +30,7 @@ import com.example.kolos.ui.components.MainTopBar
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import com.example.kolos.functions.coinDataByIdToCoinData
+import com.example.kolos.ui.components.Convertation
 
 @Composable
 fun FavouriteCoinScreen(
@@ -126,6 +127,9 @@ fun FavouriteCoinScreen(
 //                        "Цена: ${coinData.marketData.price.usd}$",
                     fontSize = 30.sp,
                     modifier = Modifier.padding(bottom = 20.dp)
+                )
+                Convertation(
+                    coinData = coinDataByIdToCoinData(coinData)
                 )
                 Chart(coinData.marketData.sparkline.price)
             }

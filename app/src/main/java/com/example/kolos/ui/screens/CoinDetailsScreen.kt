@@ -86,7 +86,7 @@ fun CoinDetailsScreen(
 
             Text(text = stringResource(R.string.price, coinData.price), fontSize = 30.sp, modifier = Modifier.padding(bottom = 20.dp))
 
-//            Convertation(coinData = coinData)
+            Convertation(coinData = coinData)
 
 //            Row {
 //                Spacer(modifier = Modifier.weight(1f))
