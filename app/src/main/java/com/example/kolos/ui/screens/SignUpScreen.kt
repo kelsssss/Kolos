@@ -37,6 +37,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
@@ -47,7 +48,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 @Composable
-fun SignUpScreen(navController: NavController, authViewModel: FirebaseAuthViewModel = viewModel()){
+fun SignUpScreen(
+    navController: NavController,
+//    authViewModel: FirebaseAuthViewModel = viewModel()
+    authViewModel: FirebaseAuthViewModel = hiltViewModel()
+){
     var context = LocalContext.current
     var email by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}

@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -51,7 +52,7 @@ fun MainTopBar(
     text: String,
     navController: NavController,
     coinsData: List<CoinData>? = null,
-    favouriteCoinViewModel: FavouriteCoinViewModel = viewModel(),
+    favouriteCoinViewModel: FavouriteCoinViewModel = hiltViewModel(),
     coinData: CoinData? = null,
 
     isCloseButtonNeeded: Boolean = false,

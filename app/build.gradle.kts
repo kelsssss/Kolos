@@ -90,6 +90,7 @@ dependencies {
     //Dagger Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     //firebase
     implementation(platform(libs.firebase.bom))

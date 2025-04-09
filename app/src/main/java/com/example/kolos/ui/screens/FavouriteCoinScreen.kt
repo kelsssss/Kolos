@@ -29,6 +29,7 @@ import com.example.kolos.ui.components.Chart
 import com.example.kolos.ui.components.MainTopBar
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.kolos.functions.coinDataByIdToCoinData
 import com.example.kolos.ui.components.Convertation
 
@@ -36,7 +37,8 @@ import com.example.kolos.ui.components.Convertation
 fun FavouriteCoinScreen(
     navController: NavController,
     coinId: String,
-    favouriteCoinDetailsViewModel: FavouriteCoinDetailsViewModel = viewModel()
+//    favouriteCoinDetailsViewModel: FavouriteCoinDetailsViewModel = viewModel()
+    favouriteCoinDetailsViewModel: FavouriteCoinDetailsViewModel = hiltViewModel()
 ){
 
     val fetchedCoinData by favouriteCoinDetailsViewModel.coinData.collectAsState()

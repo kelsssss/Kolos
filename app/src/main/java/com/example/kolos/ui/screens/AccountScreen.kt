@@ -26,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
@@ -40,8 +41,10 @@ import com.example.kolos.viewmodels.FirebaseAuthViewModel
 @Composable
 fun AccountScreen(
     navController: NavController,
-    authViewModel: FirebaseAuthViewModel = viewModel(),
-    favouriteCoinViewModel: FavouriteCoinViewModel = viewModel()
+//    authViewModel: FirebaseAuthViewModel = viewModel(),
+//    favouriteCoinViewModel: FavouriteCoinViewModel = viewModel(),
+    authViewModel: FirebaseAuthViewModel = hiltViewModel(),
+    favouriteCoinViewModel: FavouriteCoinViewModel = hiltViewModel()
     ){
 
     var showDialog by remember { mutableStateOf(false) }

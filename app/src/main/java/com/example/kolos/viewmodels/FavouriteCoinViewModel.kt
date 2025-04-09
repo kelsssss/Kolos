@@ -5,8 +5,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kolos.database.CoinsDatabase
 import com.example.kolos.database.FavouriteCoin
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
+@HiltViewModel
 class FavouriteCoinViewModel(application: Application) : AndroidViewModel(application) {
 
     private val db = CoinsDatabase.Companion.getInstance(application)

@@ -12,8 +12,11 @@ import com.google.firebase.auth.EmailAuthCredential
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FirebaseAuthViewModel: ViewModel() {
+@HiltViewModel
+class FirebaseAuthViewModel @Inject constructor(): ViewModel() {
     var auth = Firebase.auth
 
     fun signIn(email: String, password: String, auth: FirebaseAuth, navController: NavController, context: Context){

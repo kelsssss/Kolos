@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -35,7 +36,8 @@ import com.google.firebase.ktx.Firebase
 
 @Composable
 fun FavouriteScreen(
-    viewModel: FavouriteCoinViewModel = viewModel(),
+//    viewModel: FavouriteCoinViewModel = viewModel(),
+    viewModel: FavouriteCoinViewModel = hiltViewModel(),
     navController: NavController
 ) {
     val coins = viewModel.allCoins.collectAsState(emptyList())

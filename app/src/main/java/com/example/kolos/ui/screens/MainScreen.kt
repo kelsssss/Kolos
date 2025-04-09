@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
@@ -24,13 +25,16 @@ import com.example.kolos.ui.components.CurrencyCardList
 import com.example.kolos.ui.components.KolosBottomBar
 import com.example.kolos.ui.components.MainTopBar
 import com.example.kolos.ui.theme.KolosTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
 //import androidx.hilt.navigation.compose.hiltViewModel
 
 
+
 @Composable
 fun MainScreen(
-    viewModel: MainViewModel = viewModel(),
+//    viewModel: MainViewModel = viewModel(),
+    viewModel: MainViewModel = hiltViewModel(),
     navController: NavController
 ) {
 //    val viewModel: MainViewModel = hiltViewModel()

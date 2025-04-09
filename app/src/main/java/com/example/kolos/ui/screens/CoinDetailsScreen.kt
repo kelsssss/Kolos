@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -41,7 +42,8 @@ import kotlinx.coroutines.launch
 fun CoinDetailsScreen(
     navController: NavController,
     coinData: CoinData,
-    viewModel: FavouriteCoinViewModel = viewModel()
+//    viewModel: FavouriteCoinViewModel = viewModel()
+    viewModel: FavouriteCoinViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = { MainTopBar(stringResource(R.string.details_top_bar), navController = navController, coinData = coinData, isFavouriteButtonNeeded = true, isCloseButtonNeeded = true) },
