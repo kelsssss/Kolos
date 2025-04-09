@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -39,6 +40,7 @@ fun MainScreen(
 ) {
 //    val viewModel: MainViewModel = hiltViewModel()
     val coinsData by viewModel.coinData.collectAsState()
+
 
     LaunchedEffect(Unit) {
         viewModel.fetchCoinsData()

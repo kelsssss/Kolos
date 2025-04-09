@@ -1,17 +1,23 @@
 package com.example.kolos.viewmodels
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kolos.database.CoinsDatabase
 import com.example.kolos.database.FavouriteCoin
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class FavouriteCoinViewModel(application: Application) : AndroidViewModel(application) {
+//class FavouriteCoinViewModel(application: Application) : AndroidViewModel(application) {
+class FavouriteCoinViewModel @Inject constructor(
+    private val db: CoinsDatabase
+) : ViewModel() {
 
-    private val db = CoinsDatabase.Companion.getInstance(application)
+//    private val db = CoinsDatabase.Companion.getInstance(application)
     private val dbDao = db.coinsDao()
 
     val allCoins = dbDao.getAll()
