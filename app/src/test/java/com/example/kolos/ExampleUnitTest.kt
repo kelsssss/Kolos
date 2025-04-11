@@ -1,5 +1,6 @@
 package com.example.kolos
 
+import androidx.lifecycle.viewmodel.compose.viewModel
 import org.junit.Test
 
 import org.junit.Assert.*

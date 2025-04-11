@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.kolos.navigation.NavRoute
 
 
 @Composable
@@ -39,7 +40,7 @@ fun KolosBottomBar(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 IconButton(
-                    onClick = { navController.navigate("main") },
+                    onClick = { navController.navigate(NavRoute.MAIN.route) },
                 ) {
                     when (currentRoute1) {
                         "main" -> Icon(
@@ -59,7 +60,7 @@ fun KolosBottomBar(navController: NavController) {
                 Spacer(modifier = Modifier.width(40.dp))
 
                 IconButton(
-                    onClick = { navController.navigate("favourite") }
+                    onClick = { navController.navigate(NavRoute.FAVOURITE.route) }
                 ) {
                     when (currentRoute1) {
                         "favourite" -> Icon(
@@ -79,7 +80,7 @@ fun KolosBottomBar(navController: NavController) {
                 Spacer(modifier = Modifier.width(40.dp))
 
                 IconButton(
-                    onClick = { navController.navigate("account") }
+                    onClick = { navController.navigate(NavRoute.ACCOUNT.route) }
                 ) {
                     when (currentRoute1) {
                         "account" -> Icon(

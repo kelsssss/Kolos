@@ -28,6 +28,7 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.example.kolos.R
 import com.example.kolos.database.FavouriteCoin
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.viewmodels.FavouriteCoinViewModel
 
 @Composable
@@ -42,7 +43,7 @@ fun FavouriteCurrencyCard(
             .fillMaxWidth()
             .padding(top = 10.dp, start = 10.dp, end = 10.dp)
             .height(70.dp)
-            .clickable(onClick = { navController.navigate("favouriteCoin/${favouriteCoin.id}") })
+            .clickable(onClick = { navController.navigate("${NavRoute.FAVOURITECOIN.route}/${favouriteCoin.id}") })
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),

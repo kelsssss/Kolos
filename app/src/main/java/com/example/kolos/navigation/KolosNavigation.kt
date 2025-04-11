@@ -1,4 +1,4 @@
-package com.example.kolos.ui.components
+package com.example.kolos.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -27,12 +27,14 @@ fun KolosNavigation(
         startDestination = startDestination
     ) {
         composable(
-            route = "main",
+            route = NavRoute.MAIN.route,
+//            route = "main",
         ) {
             MainScreen(navController = navController)
         }
         composable(
-            route = "details/{coinDataJson}",
+            route = "${NavRoute.DETAILS.route}/{coinDataJson}",
+//            route = NavRoute.DETAILS.route,
             arguments = listOf(
                 navArgument("coinDataJson") {
                     type = NavType.StringType
@@ -49,13 +51,15 @@ fun KolosNavigation(
         }
 
         composable(
-            route = "favourite",
+            route = NavRoute.FAVOURITE.route,
+//            route = "favourite",
         ) {
             FavouriteScreen(navController = navController)
         }
 
         composable(
-            route = "favouriteCoin/{id}",
+//            route = NavRoute.FAVOURITECOIN.route,
+            route = "${NavRoute.FAVOURITECOIN.route}/{id}",
             arguments = listOf(
                 navArgument("id") {
                     type = NavType.StringType
@@ -67,19 +71,21 @@ fun KolosNavigation(
         }
 
         composable(
-            route = "signUp",
+            route = NavRoute.SIGNUP.route,
+//            route = "signUp",
         ) {
             SignUpScreen(navController = navController)
         }
 
         composable(
-            route = "signIn",
+            route = NavRoute.SIGNIN.route,
+//            route = "signIn",
         ) {
             SignInScreen(navController = navController)
         }
 
         composable(
-            route = "account",
+            route = NavRoute.ACCOUNT.route,
         ) {
             AccountScreen(navController = navController)
         }

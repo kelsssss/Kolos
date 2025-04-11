@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.kolos.R
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
 
 
@@ -60,7 +61,7 @@ fun AlertDialogOnChangePassword(
                         password = password,
                         newPassword = newPassword
                     )
-                    navController.navigate("signIn")
+                    navController.navigate(NavRoute.SIGNIN.route)
                     onDismiss()
                 }
             ) {

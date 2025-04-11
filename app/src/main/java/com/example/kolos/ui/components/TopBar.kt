@@ -36,6 +36,7 @@ import androidx.navigation.NavController
 import com.example.kolos.R
 import com.example.kolos.functions.coinDataToEncodedJson
 import com.example.kolos.functions.coinToFavouriteCoin
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.network.CoinData
 import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.google.firebase.auth.ktx.auth
@@ -63,7 +64,7 @@ fun MainTopBar(
     var expanded by remember { mutableStateOf(false) }
     var fs = Firebase.firestore
     var uid = Firebase.auth.currentUser?.uid ?: run {
-        navController.navigate("signIn")
+        navController.navigate(NavRoute.SIGNIN.route)
         Log.w("MyLog", "User not authenticated")
         return
     }
@@ -127,7 +128,8 @@ fun MainTopBar(
                                         onClick = {
                                             var encodedCoinDataJson = coinDataToEncodedJson(coin)
                                             expanded = false
-                                            navController.navigate("details/$encodedCoinDataJson")
+                                            navController.navigate("${NavRoute.DETAILS.route}/$encodedCoinDataJson")
+//                                            navController.navigate("details/$encodedCoinDataJson")
                                         }
                                     )
                                 }

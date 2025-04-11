@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.ui.components.AlertDialogOnChangePassword
 import com.example.kolos.ui.components.AlertDialogOnDeleteUser
 import com.example.kolos.ui.components.KolosBottomBar
@@ -155,7 +156,7 @@ fun AccountScreen(
                             authViewModel.signOut(auth)
                             favouriteCoinViewModel.deleteAllCoins()
                             showDialogToExit = false
-                            navController.navigate("signIn")
+                            navController.navigate(NavRoute.SIGNIN.route)
                         }
                     ) {
                         Text(text = stringResource(R.string.i_am_sure_button))

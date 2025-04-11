@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
 import com.example.kolos.database.FavouriteCoin
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.ui.components.FavouriteCurrencyCard
 import com.example.kolos.ui.components.KolosBottomBar
 import com.example.kolos.ui.components.MainTopBar
@@ -39,7 +40,7 @@ fun FavouriteScreen(
     val fs = Firebase.firestore
     var listOfCoinsByFs: List<FavouriteCoin> by remember { mutableStateOf(emptyList<FavouriteCoin>()) }
     var uid = Firebase.auth.currentUser?.uid ?: run {
-        navController.navigate("signIn")
+        navController.navigate(NavRoute.SIGNIN.route)
         Log.w("MyLog", "User not authenticated")
         return
     }

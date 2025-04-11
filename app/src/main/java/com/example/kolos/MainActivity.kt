@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.kolos.ui.components.KolosNavigation
+import com.example.kolos.navigation.KolosNavigation
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.ui.theme.KolosTheme
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -24,9 +25,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             KolosTheme {
                 if (auth.currentUser != null) {
-                    KolosNavigation(startDestination = "main")
+                    KolosNavigation(startDestination = NavRoute.MAIN.route)
                 } else {
-                    KolosNavigation(startDestination = "signIn")
+                    KolosNavigation(startDestination = NavRoute.SIGNIN.route)
                 }
 
             }

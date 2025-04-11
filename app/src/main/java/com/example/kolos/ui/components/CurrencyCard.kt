@@ -29,6 +29,7 @@ import coil.request.ImageRequest
 import coil.size.Size
 import com.example.kolos.R
 import com.example.kolos.functions.coinDataToEncodedJson
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.theme.KolosTheme
 
@@ -43,7 +44,7 @@ fun CurrencyCard(
     val encodedCoinDataJson = coinDataToEncodedJson(coinData)
 
     var clickableModifier = remember(cardModifier) {
-        cardModifier.clickable(onClick = { navController.navigate("details/$encodedCoinDataJson") })
+        cardModifier.clickable(onClick = { navController.navigate("${NavRoute.DETAILS.route}/$encodedCoinDataJson") })
     }
 
 

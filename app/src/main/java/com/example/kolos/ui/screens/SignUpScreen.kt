@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.ui.theme.KolosTheme
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
 
@@ -152,7 +153,7 @@ fun SignUpScreen(
 
             Button(
                 onClick = {
-                    navController.navigate("signIn")
+                    navController.navigate(NavRoute.SIGNIN.route)
                 }
             ) {
                 Text(text = stringResource(R.string.log_in))

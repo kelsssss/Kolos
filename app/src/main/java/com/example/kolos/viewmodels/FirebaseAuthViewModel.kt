@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.example.kolos.navigation.NavRoute
 import com.google.firebase.Firebase
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -27,7 +28,7 @@ class FirebaseAuthViewModel @Inject constructor() : ViewModel() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d("MyLog", "Sign In Successful!")
-                    navController.navigate("main")
+                    navController.navigate(NavRoute.MAIN.route)
                 } else {
                     Log.d("MyLog", "Sign In Failed")
                     Toast.makeText(
@@ -50,7 +51,7 @@ class FirebaseAuthViewModel @Inject constructor() : ViewModel() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d("MyLog", "Sign Up Successful!")
-                    navController.navigate("main")
+                    navController.navigate(NavRoute.MAIN.route)
                 } else {
                     Log.d("MyLog", "Sign Up Failed")
                     Toast.makeText(

@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.kolos.R
+import com.example.kolos.navigation.NavRoute
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
 
 
@@ -52,7 +53,7 @@ fun AlertDialogOnDeleteUser(
                         email = email,
                         password = password
                     )
-                    navController.navigate("signIn")
+                    navController.navigate(NavRoute.SIGNIN.route)
                     onDismiss()
                 }
             ) {
