@@ -13,13 +13,10 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.sharp.Favorite
-import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,7 +29,7 @@ import androidx.navigation.NavController
 
 @Composable
 fun KolosBottomBar(navController: NavController) {
-    var currentRoute1 by remember {mutableStateOf(navController.currentBackStackEntry?.destination?.route)}
+    var currentRoute1 by remember { mutableStateOf(navController.currentBackStackEntry?.destination?.route) }
 
     BottomAppBar(
         actions = {
@@ -43,13 +40,14 @@ fun KolosBottomBar(navController: NavController) {
             ) {
                 IconButton(
                     onClick = { navController.navigate("main") },
-                    ) {
-                    when(currentRoute1){
+                ) {
+                    when (currentRoute1) {
                         "main" -> Icon(
                             imageVector = Icons.Default.Home,
                             contentDescription = null,
                             modifier = Modifier.size(35.dp)
                         )
+
                         else -> Icon(
                             imageVector = Icons.Outlined.Home,
                             contentDescription = null,
@@ -63,12 +61,13 @@ fun KolosBottomBar(navController: NavController) {
                 IconButton(
                     onClick = { navController.navigate("favourite") }
                 ) {
-                    when(currentRoute1){
+                    when (currentRoute1) {
                         "favourite" -> Icon(
                             imageVector = Icons.Default.Favorite,
                             contentDescription = null,
                             modifier = Modifier.size(35.dp)
                         )
+
                         else -> Icon(
                             imageVector = Icons.Outlined.FavoriteBorder,
                             contentDescription = null,
@@ -82,12 +81,13 @@ fun KolosBottomBar(navController: NavController) {
                 IconButton(
                     onClick = { navController.navigate("account") }
                 ) {
-                    when(currentRoute1){
+                    when (currentRoute1) {
                         "account" -> Icon(
                             imageVector = Icons.Default.AccountCircle,
                             contentDescription = null,
                             modifier = Modifier.size(35.dp)
                         )
+
                         else -> Icon(
                             imageVector = Icons.Outlined.AccountCircle,
                             contentDescription = null,

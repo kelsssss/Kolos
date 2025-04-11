@@ -1,8 +1,10 @@
 package com.example.kolos.ui.components
 
+//import androidx.compose.material3.TextField
+//import com.example.kolos.network.Image
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -14,10 +16,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-//import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -32,13 +32,10 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.kolos.R
 import com.example.kolos.network.CoinData
-//import com.example.kolos.network.Image
-import androidx.compose.foundation.Image
-
 
 
 @Composable
-fun Convertation(coinData: CoinData){
+fun Convertation(coinData: CoinData) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -51,31 +48,31 @@ fun Convertation(coinData: CoinData){
             text = stringResource(R.string.convertation),
             fontSize = 20.sp,
             modifier = Modifier.padding(bottom = 5.dp)
-            )
+        )
 
         TextField(
             value = inputInFiat,
-            onValueChange = { inputInFiat = it},
-            label = { Text(text = stringResource(R.string.usd))},
-            placeholder = { Text (text = stringResource(R.string.enter_usd_amount))},
+            onValueChange = { inputInFiat = it },
+            label = { Text(text = stringResource(R.string.usd)) },
+            placeholder = { Text(text = stringResource(R.string.enter_usd_amount)) },
             leadingIcon = {
                 Image(
                     painter = painterResource(R.drawable.dollar),
                     contentDescription = null,
                     modifier = Modifier.size(30.dp)
-                    )
+                )
             },
             trailingIcon = {
                 IconButton(
-                onClick = {
-                    inputInCrypto = (inputInFiat.toDouble() / coinData.price).toString()
-                }
-            )  {
+                    onClick = {
+                        inputInCrypto = (inputInFiat.toDouble() / coinData.price).toString()
+                    }
+                ) {
                     Icon(
                         imageVector = Icons.Default.Cached,
                         contentDescription = null
                     )
-            }
+                }
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -90,22 +87,22 @@ fun Convertation(coinData: CoinData){
         )
         TextField(
             value = inputInCrypto,
-            onValueChange = {inputInCrypto = it},
-            label = { Text(text = coinData.name)},
-            placeholder = { Text (text = stringResource(R.string.enter_amount, coinData.name))},
+            onValueChange = { inputInCrypto = it },
+            label = { Text(text = coinData.name) },
+            placeholder = { Text(text = stringResource(R.string.enter_amount, coinData.name)) },
             leadingIcon = {
                 AsyncImage(
                     model = coinData.image,
                     contentDescription = null,
                     modifier = Modifier.size(30.dp)
-                    )
+                )
             },
             trailingIcon = {
                 IconButton(
                     onClick = {
                         inputInFiat = (inputInCrypto.toDouble() * coinData.price).toString()
                     }
-                )  {
+                ) {
                     Icon(
                         imageVector = Icons.Default.Cached,
                         contentDescription = null

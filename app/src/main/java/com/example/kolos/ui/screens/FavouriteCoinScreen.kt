@@ -14,24 +14,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
-import com.example.kolos.viewmodels.FavouriteCoinDetailsViewModel
 import com.example.kolos.R
-import com.example.kolos.ui.components.Chart
-import com.example.kolos.ui.components.MainTopBar
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.res.stringResource
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.kolos.functions.coinDataByIdToCoinData
+import com.example.kolos.ui.components.Chart
 import com.example.kolos.ui.components.Convertation
+import com.example.kolos.ui.components.MainTopBar
+import com.example.kolos.viewmodels.FavouriteCoinDetailsViewModel
 
 @Composable
 fun FavouriteCoinScreen(
@@ -39,7 +38,7 @@ fun FavouriteCoinScreen(
     coinId: String,
 //    favouriteCoinDetailsViewModel: FavouriteCoinDetailsViewModel = viewModel()
     favouriteCoinDetailsViewModel: FavouriteCoinDetailsViewModel = hiltViewModel()
-){
+) {
 
     val fetchedCoinData by favouriteCoinDetailsViewModel.coinData.collectAsState()
 
@@ -69,7 +68,7 @@ fun FavouriteCoinScreen(
                 .padding(innerPadding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            if(fetchedCoinData == null){
+            if (fetchedCoinData == null) {
                 CircularProgressIndicator(
                     modifier = Modifier.padding(16.dp),
                     color = Color.White
@@ -85,12 +84,13 @@ fun FavouriteCoinScreen(
                     SubcomposeAsyncImage(
                         model = coinData.image.small,
                         contentDescription = null,
-                        modifier = Modifier.padding(
-                            start = 10.dp,
-                            top = 7.dp,
-                            bottom = 7.dp,
-                            end = 10.dp
-                        )
+                        modifier = Modifier
+                            .padding(
+                                start = 10.dp,
+                                top = 7.dp,
+                                bottom = 7.dp,
+                                end = 10.dp
+                            )
                             .size(80.dp),
                         loading = {
                             CircularProgressIndicator(
@@ -116,8 +116,8 @@ fun FavouriteCoinScreen(
                         }
                     )
                     Column {
-                            Text(text = coinData.name, fontSize = 50.sp)
-                            Text(text = coinData.symbol, fontSize = 20.sp)
+                        Text(text = coinData.name, fontSize = 50.sp)
+                        Text(text = coinData.symbol, fontSize = 20.sp)
 
 
                     }

@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
@@ -25,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
 import coil.compose.SubcomposeAsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
@@ -34,8 +31,6 @@ import com.example.kolos.R
 import com.example.kolos.functions.coinDataToEncodedJson
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.theme.KolosTheme
-import com.google.gson.Gson
-import java.net.URLEncoder
 
 @Composable
 fun CurrencyCard(
@@ -71,7 +66,7 @@ fun CurrencyCard(
 //                model = coinData.image,
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(coinData.image)
-                    .size(Size(50,50))
+                    .size(Size(50, 50))
                     .diskCachePolicy(CachePolicy.ENABLED)
                     .memoryCachePolicy(CachePolicy.ENABLED)
                     .crossfade(false)

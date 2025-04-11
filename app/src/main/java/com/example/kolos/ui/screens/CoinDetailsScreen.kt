@@ -1,5 +1,6 @@
 package com.example.kolos.ui.screens
 
+//import androidx.navigation.NavController
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,11 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,23 +17,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-//import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.example.kolos.R
-import com.example.kolos.database.FavouriteCoin
-import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.components.Chart
 import com.example.kolos.ui.components.Convertation
 import com.example.kolos.ui.components.MainTopBar
-import kotlinx.coroutines.launch
+import com.example.kolos.viewmodels.FavouriteCoinViewModel
 
 @Composable
 fun CoinDetailsScreen(
@@ -46,7 +37,15 @@ fun CoinDetailsScreen(
     viewModel: FavouriteCoinViewModel = hiltViewModel()
 ) {
     Scaffold(
-        topBar = { MainTopBar(stringResource(R.string.details_top_bar), navController = navController, coinData = coinData, isFavouriteButtonNeeded = true, isCloseButtonNeeded = true) },
+        topBar = {
+            MainTopBar(
+                stringResource(R.string.details_top_bar),
+                navController = navController,
+                coinData = coinData,
+                isFavouriteButtonNeeded = true,
+                isCloseButtonNeeded = true
+            )
+        },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(
@@ -64,10 +63,20 @@ fun CoinDetailsScreen(
                 SubcomposeAsyncImage(
                     model = coinData.image,
                     contentDescription = null,
-                    modifier = Modifier.padding(start = 10.dp, top = 7.dp, bottom = 7.dp, end = 10.dp),
+                    modifier = Modifier.padding(
+                        start = 10.dp,
+                        top = 7.dp,
+                        bottom = 7.dp,
+                        end = 10.dp
+                    ),
                     loading = {
                         CircularProgressIndicator(
-                            modifier = Modifier.padding(start = 10.dp, top = 7.dp, bottom = 7.dp, end = 10.dp),
+                            modifier = Modifier.padding(
+                                start = 10.dp,
+                                top = 7.dp,
+                                bottom = 7.dp,
+                                end = 10.dp
+                            ),
                             color = Color.White
                         )
                     },
@@ -86,7 +95,11 @@ fun CoinDetailsScreen(
                 Spacer(modifier = Modifier.weight(1f))
             }
 
-            Text(text = stringResource(R.string.price, coinData.price), fontSize = 30.sp, modifier = Modifier.padding(bottom = 20.dp))
+            Text(
+                text = stringResource(R.string.price, coinData.price),
+                fontSize = 30.sp,
+                modifier = Modifier.padding(bottom = 20.dp)
+            )
 
             Convertation(coinData = coinData)
 

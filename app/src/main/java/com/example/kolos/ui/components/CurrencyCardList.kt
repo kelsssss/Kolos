@@ -1,6 +1,5 @@
 package com.example.kolos.ui.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,11 +21,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.kolos.viewmodels.MainViewModel
 import com.example.kolos.network.CoinData
 import com.example.kolos.ui.theme.KolosTheme
+import com.example.kolos.viewmodels.MainViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,7 +49,7 @@ fun CurrencyCardList(
     }
 
     LaunchedEffect(isLoading.value) {
-        if(!isLoading.value){
+        if (!isLoading.value) {
             isRefreshing = false
         }
     }
@@ -70,8 +68,8 @@ fun CurrencyCardList(
         LazyColumn {
             items(
                 items = coinData,
-                key = {it.id},
-                contentType = {"card"}
+                key = { it.id },
+                contentType = { "card" }
 
             ) { coinData ->
                 CurrencyCard(navController, coinData, cardModifier, imageModifier)

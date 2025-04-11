@@ -1,6 +1,5 @@
 package com.example.kolos.ui.screens
 
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,22 +13,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
-import com.example.kolos.viewmodels.MainViewModel
 import com.example.kolos.ui.components.CurrencyCardList
 import com.example.kolos.ui.components.KolosBottomBar
 import com.example.kolos.ui.components.MainTopBar
 import com.example.kolos.ui.theme.KolosTheme
-import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
-//import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.kolos.viewmodels.MainViewModel
 
+//import androidx.hilt.navigation.compose.hiltViewModel
 
 
 @Composable
@@ -48,7 +43,14 @@ fun MainScreen(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { MainTopBar(stringResource(R.string.MainScreenTopBar), navController, coinsData = coinsData, isSearchNeeded = true) },
+        topBar = {
+            MainTopBar(
+                stringResource(R.string.MainScreenTopBar),
+                navController,
+                coinsData = coinsData,
+                isSearchNeeded = true
+            )
+        },
         bottomBar = { KolosBottomBar(navController) },
     ) { innerPadding ->
         Column(
@@ -58,7 +60,7 @@ fun MainScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            when(coinsData == null){
+            when (coinsData == null) {
                 true -> CircularProgressIndicator(color = Color.White)
                 false -> coinsData?.let { CurrencyCardList(navController, it) }
             }

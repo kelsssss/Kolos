@@ -1,10 +1,9 @@
 package com.example.kolos
 
+//import com.example.kolos.network.RetrofitClient.retrofit
 import android.content.Context
 import com.example.kolos.database.CoinsDatabase
 import com.example.kolos.network.ApiService
-//import com.example.kolos.network.RetrofitClient.retrofit
-import com.example.kolos.viewmodels.MainViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +20,7 @@ object Module {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit{
+    fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.coingecko.com/api/v3/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -30,7 +29,7 @@ object Module {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit) : ApiService {
+    fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
@@ -39,7 +38,6 @@ object Module {
     fun provideDB(@ApplicationContext context: Context): CoinsDatabase {
         return CoinsDatabase.getInstance(context)
     }
-
 
 
 }

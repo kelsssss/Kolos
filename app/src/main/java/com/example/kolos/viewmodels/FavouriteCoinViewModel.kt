@@ -1,8 +1,5 @@
 package com.example.kolos.viewmodels
 
-import android.app.Application
-import android.view.View
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kolos.database.CoinsDatabase
@@ -17,7 +14,7 @@ class FavouriteCoinViewModel @Inject constructor(
     private val db: CoinsDatabase
 ) : ViewModel() {
 
-//    private val db = CoinsDatabase.Companion.getInstance(application)
+    //    private val db = CoinsDatabase.Companion.getInstance(application)
     private val dbDao = db.coinsDao()
 
     val allCoins = dbDao.getAll()
@@ -34,16 +31,15 @@ class FavouriteCoinViewModel @Inject constructor(
         }
     }
 
-    suspend fun isCoinFavourite(name: String) : Int{
+    suspend fun isCoinFavourite(name: String): Int {
         return dbDao.isCoinFavourite(name)
     }
 
-    fun deleteAllCoins(){
+    fun deleteAllCoins() {
         viewModelScope.launch {
             dbDao.deleteAllCoins()
         }
     }
-
 
 
 }

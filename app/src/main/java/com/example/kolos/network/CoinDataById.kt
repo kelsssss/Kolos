@@ -9,7 +9,7 @@ data class CoinDataById(
     val image: Image,
     @SerializedName("market_data") val marketData: MarketData,
 
-)
+    )
 
 data class Image(
     val small: String

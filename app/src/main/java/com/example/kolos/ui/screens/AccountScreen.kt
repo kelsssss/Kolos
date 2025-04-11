@@ -1,7 +1,5 @@
 package com.example.kolos.ui.screens
 
-import android.util.Log
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,10 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
 import com.example.kolos.ui.components.AlertDialogOnChangePassword
@@ -45,18 +40,18 @@ fun AccountScreen(
 //    favouriteCoinViewModel: FavouriteCoinViewModel = viewModel(),
     authViewModel: FirebaseAuthViewModel = hiltViewModel(),
     favouriteCoinViewModel: FavouriteCoinViewModel = hiltViewModel()
-    ){
+) {
 
     var showDialog by remember { mutableStateOf(false) }
-    var showDialogToExit by remember {mutableStateOf(false)}
-    var showDialogToChangePassword by remember {mutableStateOf(false)}
+    var showDialogToExit by remember { mutableStateOf(false) }
+    var showDialogToChangePassword by remember { mutableStateOf(false) }
     var auth = authViewModel.auth
 
     Scaffold(
         topBar = {
             MainTopBar(
-            text = stringResource(R.string.account),
-            navController = navController
+                text = stringResource(R.string.account),
+                navController = navController
             )
         },
         bottomBar = {
@@ -64,7 +59,7 @@ fun AccountScreen(
                 navController = navController
             )
         }
-    ) { innerPadding->
+    ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -132,19 +127,19 @@ fun AccountScreen(
 
 
         }
-        if(showDialog){
+        if (showDialog) {
             AlertDialogOnDeleteUser(
                 showDialog = showDialog,
-                onDismiss = { showDialog = false},
+                onDismiss = { showDialog = false },
                 authViewModel = authViewModel,
                 navController = navController,
             )
         }
 
-        if(showDialogToExit){
+        if (showDialogToExit) {
             AlertDialog(
-                onDismissRequest = { showDialogToExit = false},
-                title ={ Text(text = stringResource(R.string.log_out_confirmation_text) ) },
+                onDismissRequest = { showDialogToExit = false },
+                title = { Text(text = stringResource(R.string.log_out_confirmation_text)) },
                 dismissButton = {
                     Button(
                         onClick = {
@@ -169,7 +164,7 @@ fun AccountScreen(
 
             )
         }
-        if(showDialogToChangePassword){
+        if (showDialogToChangePassword) {
             AlertDialogOnChangePassword(
                 showDialog = showDialogToChangePassword,
                 onDismiss = { showDialogToChangePassword = false },

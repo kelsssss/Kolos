@@ -13,7 +13,7 @@ interface ApiService {
 
     @GET("coins/{id}?x_cg_demo_api_key=CG-JgzNetfueE5S2carhKRYksD8")
     suspend fun getCoinDataById(
-        @Path("id") id : String,
+        @Path("id") id: String,
         @Query("sparkline") sparkline: Boolean = true
-    ) : CoinDataById
+    ): CoinDataById
 }

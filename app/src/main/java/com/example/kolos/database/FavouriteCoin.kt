@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "favourite_coin_table")
-data class FavouriteCoin (
+data class FavouriteCoin(
     @PrimaryKey val id: String = "",
     val image: String = "",
     val name: String = "",

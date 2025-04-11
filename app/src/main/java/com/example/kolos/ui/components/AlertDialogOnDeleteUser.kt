@@ -29,18 +29,18 @@ fun AlertDialogOnDeleteUser(
 
     AlertDialog(
         onDismissRequest = { onDismiss() },
-        title = {Text(text = stringResource(R.string.enter_your_data_to_confirm_deletion))},
+        title = { Text(text = stringResource(R.string.enter_your_data_to_confirm_deletion)) },
         text = {
             Column {
                 TextField(
                     value = email,
-                    onValueChange = {email = it},
-                    label = {Text(text = stringResource(R.string.email))}
+                    onValueChange = { email = it },
+                    label = { Text(text = stringResource(R.string.email)) }
                 )
                 TextField(
                     value = password,
-                    onValueChange = {password = it},
-                    label = {Text(text = stringResource(R.string.password) )}
+                    onValueChange = { password = it },
+                    label = { Text(text = stringResource(R.string.password)) }
                 )
             }
         },
@@ -64,9 +64,9 @@ fun AlertDialogOnDeleteUser(
                 onClick = {
                     onDismiss()
                 }
-            ){
+            ) {
                 Text(text = stringResource(R.string.cancel_button))
             }
         },
-        )
+    )
 }

@@ -31,23 +31,23 @@ fun AlertDialogOnChangePassword(
 
     AlertDialog(
         onDismissRequest = { onDismiss() },
-        title = {Text(text = stringResource(R.string.enter_your_data_and_new_password))},
+        title = { Text(text = stringResource(R.string.enter_your_data_and_new_password)) },
         text = {
             Column {
                 TextField(
                     value = email,
-                    onValueChange = {email = it},
-                    label = {Text(text = stringResource(R.string.email))}
+                    onValueChange = { email = it },
+                    label = { Text(text = stringResource(R.string.email)) }
                 )
                 TextField(
                     value = password,
-                    onValueChange = {password = it},
-                    label = {Text(text = stringResource(R.string.old_password))}
+                    onValueChange = { password = it },
+                    label = { Text(text = stringResource(R.string.old_password)) }
                 )
                 TextField(
                     value = newPassword,
-                    onValueChange = {newPassword = it},
-                    label = {Text(text = stringResource(R.string.new_password))}
+                    onValueChange = { newPassword = it },
+                    label = { Text(text = stringResource(R.string.new_password)) }
                 )
             }
         },
@@ -72,7 +72,7 @@ fun AlertDialogOnChangePassword(
                 onClick = {
                     onDismiss()
                 }
-            ){
+            ) {
                 Text(text = stringResource(R.string.cancel_button))
             }
         },
