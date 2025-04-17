@@ -1,5 +1,7 @@
 package com.example.kolos.ui.screens
 
+import android.app.Activity
+import android.content.Context.MODE_PRIVATE
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,18 +22,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.kolos.R
 import com.example.kolos.navigation.NavRoute
+import com.example.kolos.functions.restartApp
 import com.example.kolos.ui.components.AlertDialogOnChangePassword
 import com.example.kolos.ui.components.AlertDialogOnDeleteUser
 import com.example.kolos.ui.components.KolosBottomBar
 import com.example.kolos.ui.components.MainTopBar
 import com.example.kolos.viewmodels.FavouriteCoinViewModel
 import com.example.kolos.viewmodels.FirebaseAuthViewModel
+import com.yariksoffice.lingver.Lingver
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,6 +53,14 @@ fun AccountScreen(
     var showDialogToChangePassword by remember { mutableStateOf(false) }
     var auth = authViewModel.auth
 
+    var context = LocalContext.current
+    var activity = context as Activity
+//    var forceUpdate = remember {mutableStateOf(false)}
+
+
+
+
+//key(forceUpdate) {
     Scaffold(
         topBar = {
             MainTopBar(
@@ -68,6 +81,29 @@ fun AccountScreen(
 //            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(
+                onClick = {
+                    var prefs = context.getSharedPreferences("prefs", MODE_PRIVATE)
+                    var oldLang = prefs.getString("lang", "en") ?: "en"
+                    var newLang = when (oldLang) {
+                        "en" -> "ru"
+                        "ru" -> "en"
+                        else -> "en"
+                    }
+
+                    prefs.edit().putString("lang", newLang).apply()
+                    Lingver.getInstance().setLocale(context, newLang)
+//                    context.recreate()
+//                    forceUpdate.value = !forceUpdate.value
+                    restartApp(activity)
+
+                }
+            ) {
+                Text(text = stringResource(R.string.change_language))
+            }
+
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(text = stringResource(R.string.your_email))
@@ -174,4 +210,5 @@ fun AccountScreen(
             )
         }
     }
+//}
 }

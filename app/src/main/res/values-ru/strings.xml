@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kolos</string>
+    <string name="MainScreenTopBar">Монеты</string>
+    <string name="favourite">Избранные</string>
+    <string name="account">Аккаунт</string>
+    <string name="your_email">Ваша почта:</string>
+    <string name="log_out">Выйти из аккаунта:</string>
+    <string name="log_out_button">Выйти</string>
+    <string name="change_password">Сменить пароль:</string>
+    <string name="change_password_button">Сменить пароль</string>
+    <string name="delete_account">Удалить аккаунт:</string>
+    <string name="delete_button">Удалить</string>
+    <string name="log_out_confirmation_text">Вы выйдете из аккаунта, вы уверены?</string>
+    <string name="cancel_button">Отмена</string>
+    <string name="i_am_sure_button">Я уверен!</string>
+    <string name="details_top_bar">Детали</string>
+    <string name="price">Цена: %1$s$</string>
+    <string name="email">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="password_placeholder">пароль</string>
+    <string name="email_placeholder">примерпочты@mail.com</string>
+    <string name="log_in">Войти</string>
+    <string name="don_t_have_an_account">Нет аккаунта?</string>
+    <string name="create_account">Создать аккаунт</string>
+    <string name="passwords_are_not_the_same">Пароли различаются!</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="already_have_a_account">Уже есть аккаунт?</string>
+    <string name="search_coin">Поиск монет...</string>
+    <string name="nothing_found">Ничего не найдено</string>
+    <string name="enter_your_data_and_new_password">Введите данные вашего аккаунта и новый пароль</string>
+    <string name="old_password">Старый пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="update">Обновить</string>
+    <string name="enter_your_data_to_confirm_deletion">Введите ваши данные для подтверждения удаления</string>
+    <string name="convertation">Конвертация</string>
+    <string name="usd">USD</string>
+    <string name="enter_usd_amount">Введите количество usd</string>
+    <string name="enter_amount">Введите %1$s количество</string>
+    <string name="change_language">Сменить язык</string>
+</resources>

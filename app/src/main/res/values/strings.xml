@@ -36,4 +36,5 @@
     <string name="usd">USD</string>
     <string name="enter_usd_amount">Enter usd amount</string>
     <string name="enter_amount">Enter %1$s amount</string>
+    <string name="change_language">Change language</string>
 </resources>
